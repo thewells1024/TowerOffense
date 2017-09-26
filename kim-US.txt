@@ -1,0 +1,5 @@
+As a user, I want to log in to a server, in order to save my profile.
+
+As a user, I want to select the level of difficulty of the computer to play against, in order to play a fair game.
+
+As a user, I want to send build units in Tower Offense, in order to destroy my opponent’s base and also receive additional resources. 

@@ -1,0 +1,5 @@
+- The system shall provide a user’s profile data and game history after the user has logged in.
+
+- The system shall prevent more than 200 units to be present on the game board at any given point during a game by keeping track of all units produced and placing a limit of 100 units on each player.
+   
+- The system shall show game statistics at the end of a game.
