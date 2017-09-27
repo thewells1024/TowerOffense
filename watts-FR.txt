@@ -1,0 +1,5 @@
+The system shall provide a game-options menu to the host before each match.
+
+The system shall provide a tile-based map editor to the player.
+
+The system shall use the Elo rating system to match players for games.
