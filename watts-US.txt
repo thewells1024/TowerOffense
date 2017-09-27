@@ -1,0 +1,5 @@
+As a player, I want to adjust game income settings, so that I can control the pace of gameplay.
+
+As a player, I want to have an in-game map editor, so that I can customize my gameplay experience.
+
+As a player, I want to have game matchmaking use the Elo rating system, so that matches are not one-sided.
