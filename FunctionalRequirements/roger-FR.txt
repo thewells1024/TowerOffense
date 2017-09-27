@@ -1,5 +1,5 @@
-The system shall provide unit increases.
+The system shall provide the functionality to pause the game.
 
 The system shall indicate the player’s health level.
 
-The system shall provide upgrades to towers, units, and bases.
+The system shall provide a bonus that increases the player’s health level.
