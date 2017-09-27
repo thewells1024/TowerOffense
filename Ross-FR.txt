@@ -1,0 +1,7 @@
+The system shall provide two maps.
+
+The system shall contain player-capturable supply depots that increase the player's resource income.
+
+The system shall provide towers of two different weapon types.
+
+
