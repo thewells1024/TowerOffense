@@ -1,0 +1,6 @@
+As a game player, I want to save game replays on my profile, so that I can improve as a game player.
+ 
+As a user, I want to buy towers of two different weapon types, so that I can defend my base more strategically.
+  
+As a user, I want to have two maps to play on, so that there is more variety in the game.
+
