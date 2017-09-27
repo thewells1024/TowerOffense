@@ -1,0 +1,5 @@
+The system shall provide a win and loss count after each match.
+
+The system shall provide users 1v1 multiplayer functionality.
+
+The system shall provide AI bots for players to play against.

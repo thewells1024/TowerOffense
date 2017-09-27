@@ -1,0 +1,5 @@
+As a competitive user, I want to see my win and loss count, so that I can compare my performance to other players.
+
+As a social user, I want to be able to play against my friends, so that I can enjoy the experience with my friends.
+
+As a user, I want to be able to play against bots, so that I can practice and improve my strategies.
