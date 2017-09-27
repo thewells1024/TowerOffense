@@ -1,0 +1,5 @@
+The system shall provide a leaderboard with player statistics.
+
+The system shall provide a feature to connect with one's friends through either Facebook or phone number
+
+The system shall provide a menu that contains sound and preference options.

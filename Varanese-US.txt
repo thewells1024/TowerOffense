@@ -1,0 +1,6 @@
+As a player, I want to show my scores on a leaderboard, so that I can compare myself to friends.
+
+As a player, I want to connect with friends by either phone number or facebook, to make it easier to play with them.
+
+As a player, I want to finish a match within 10 minutes, so that I can play when I don’t have a large amount of time.
+
