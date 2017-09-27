@@ -1,0 +1,5 @@
+As a user, I want to enter levels with more obstacles than previous levels, so that I can remain challenged.
+
+As a user, I want to compare my current performance to my past performance, so that I can monitor my improvement.
+
+As a user, I want to set traps for incoming mobs, so that I can defend my base.

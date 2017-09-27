@@ -1,0 +1,5 @@
+The system shall provide unit increases.
+
+The system shall indicate the player’s health level.
+
+The system shall provide upgrades to towers, units, and bases.
