@@ -1,0 +1,22 @@
+<module name="Checker">
+    <!-- Annotation Specific Checks -->
+    <module name="AnnotationLocation">
+        <property name="allowSamelineSingleParameterlessAnnotation" value="false" />
+    </module>
+    <module name="MissingOverride" />
+
+    <!-- General Code Style Checks -->
+    <module name="LeftCurly" />
+    <module name="RightCurly" />
+    <module name="NeedBraces" />
+    <module name="DeclarationOrder" />
+    <module name="DefaultComesLast" />
+    <module name="EmptyStatement" />
+    <module name="EqualsHashCode" />
+    <module name="FallThrough" />
+    <module name="FinalLocalVariable" />
+    <module name="MagicNumber" />
+    <module name="MultipleVariableDeclarations" />
+    <module name="OneStatementPerLine" />
+    <module name="PackageDeclaration" />
+</module>
