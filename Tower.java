@@ -5,40 +5,31 @@ import java.lang.*;
 * Interfaces are implicitly abstract, public
 */
 
-public interface Tower {
+public enum Priority {
+	DISTANCE, HEALTH
+};
+
+public interface Tower{
 
 	/* Return a target unit using another custom priority.
+	* switch (p) {
+		case DISTANCE: {
+			//do stuff
+			break;
+		} 
+		case HEALTH {
+			//do stuff
+			break;
+		}
+		default: {
+			break;
+		}
+	}
 	*/
-	public Unit selectTargetByPriority(Tower tower);
-
-
-	/* Return a target unit based on which unit is the shortest distance away.
-	*/
-	public Unit selectTargetByDistance(Tower tower);
-
-
-	/* Return a target unit based on which unit has the lowest health.
-	*/
-	public Unit selectTargetByLowestHealth(Tower tower);
+	public Unit selectTargetByPriority(ArrayList<Unit> units, Priority p);
 
 
 	/* Attack a targeted unit with a particular weapon.
 	*/
-	public void attackUnit(Tower tower, Unit unit, Weapon weapon);
+	public void attackUnit(Unit unit);
 }
-
-/* Use this interface by creating a class like: 
-* public class MassiveTower implements Tower {
-	public MassiveTower() {
-		super();
-	}
-
-	public Unit selectTargetByPriority(Tower tower) {
-		...
-		return unit;
-	}
-	...
-	  ...
-	    ...
-  }
-*/
