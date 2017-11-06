@@ -4,5 +4,13 @@
 
 public interface Player{
 
+   public double getWinRatio();
 
+   public int getLosses();
+
+   public String getUsername();
+
+   public int getWins();
+
+   public void addResult(int gameResult);
 }
