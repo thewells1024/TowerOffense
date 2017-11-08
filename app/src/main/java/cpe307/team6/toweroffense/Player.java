@@ -1,16 +1,16 @@
-/* Interface for Players (Bots/Humans) 
- * Not implemented yet, just using to figure out pull requests
+/* Interface for Players (Bots/Humans)
+ * Outside of the actual game
  */
 
 public interface Player{
 
-   public double getWinRatio();
+   public String getUsername();
 
    public int getLosses();
 
-   public String getUsername();
-
    public int getWins();
+
+   public double getWinRatio();
 
    public void addResult(int gameResult);
 }
