@@ -19,4 +19,58 @@
     <module name="MultipleVariableDeclarations" />
     <module name="OneStatementPerLine" />
     <module name="PackageDeclaration" />
+    <module name="StringLiteralEquality" />
+
+    <!-- Imports -->
+    <module name="AvoidStarImports" />
+    <module name="CustomImportOrder">
+        <property name="customImportOrderRules"
+            value="STATIC###SAME_PACKAGE###STANDARD_JAVA_PACKAGE###THIRD_PARTY###SPECIAL_IMPORTS" />
+        <property name="specialImportsRegExp" value="^lombok\." />
+    </module>
+    <module name="RedundantImport" />
+    <module name="UnusedImports" />
+
+    <!-- Misc -->
+    <module name="ArrayTypeStyle" />
+    <module name="FinalParameters" />
+    <module name="Indentation">
+        <property name="basicOffset" value="3" />
+        <property name="caseIndent" value="3" />
+        <property name="arrayInitIndent" value="3" />
+        <property name="lineWrappingIndentation" />
+    </module>
+    <module name="NewlineAtEndOfFile" />
+    <module name="OuterTypeFilename" />
+    <module name="UpperEll" />
+
+    <!-- Modifiers -->
+    <module name="ModifierOrder" />
+    <module name="RedundantModifier" />
+
+    <!-- Names -->
+    <module name="AbstractClassName" />
+    <module name="CatchParameterName">
+        <property name="format" value=".*Exception|except" />
+    </module>
+    <module name="ConstantName" />
+    <module name="LocalFinalVariableName" />
+    <module name="LocalVariableName" />
+    <module name="MemberName" />
+    <module name="MethodName" />
+    <module name="PackageName" />
+    <module name="ParameterName">
+        <property name="format" value="^[a-z][a-zA-z0-9]{2,}$" />
+    </module>
+    <module name="TypeName" />
+
+    <!-- Whitespace -->
+    <module name="EmptyForInitializerPad" />
+    <module name="FileTabCharacter" />
+    <module name="OperatorWrap">
+        <property name="option" value="eol" />
+    </module>
+    <module name="SeparatorWrap" />
+    <module name="WhitespaceAfter" />
+    <module name="WhitespaceAround" />
 </module>
