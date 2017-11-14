@@ -1,35 +1,19 @@
-import java.lang.*;
-
-/*
-* Interface for Towers
-* Interfaces are implicitly abstract, public
-*/
-
-public enum Priority {
-	DISTANCE, HEALTH
-};
+import java.lang.Enum;
+import java.util.List;
 
 public interface Tower{
 
-	/* Return a target unit using another custom priority.
-	* switch (p) {
-		case DISTANCE: {
-			//do stuff
-			break;
-		} 
-		case HEALTH {
-			//do stuff
-			break;
-		}
-		default: {
-			break;
-		}
-	}
+	public enum Priority {
+		DISTANCE, HEALTH, FIRST, LAST
+	};
+	
+	/*
+	*	Sets priority to given priority.
 	*/
-	public Unit selectTargetByPriority(ArrayList<Unit> units, Priority p);
+	public void setPriority(Priority priority);
 
 
-	/* Attack a targeted unit with a particular weapon.
+	/* Attack 0 or more units in the list of units
 	*/
-	public void attackUnit(Unit unit);
+	public void attack(List<Unit> units);
 }
