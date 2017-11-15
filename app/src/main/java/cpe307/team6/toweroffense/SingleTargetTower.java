@@ -1,6 +1,6 @@
 /* design taken from the not-yet-pulled tower interface */
 
-import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class SingleTargetTower implements Tower {
@@ -10,7 +10,7 @@ public class SingleTargetTower implements Tower {
    private final static int damage;
 
    /* returns the first unit in the list that is within the tower's range */
-   public Unit selectTargetByPriority(ArrayList<Unit> units){
+   public Unit selectTargetByPriority(List<Unit> units){
 	   /* assuming this list is organized by priority already */
 	   for(Unit unit: units) {
 		   if(unit.getLocation().getDistance(this.location) < attackDistance) {
