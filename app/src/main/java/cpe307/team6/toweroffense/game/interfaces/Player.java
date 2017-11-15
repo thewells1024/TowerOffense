@@ -1,6 +1,4 @@
-/* Interface for Players (Bots/Humans)
- * Outside of the actual game
- */
+package cpe307.team6.toweroffense.game.interfaces;
 
 public interface Player{
 
