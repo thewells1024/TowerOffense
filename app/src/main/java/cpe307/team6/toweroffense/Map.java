@@ -1,30 +1,38 @@
+package cpe307.team6.toweroffense.game;
+
 import java.util.List;
+import cpe307.team6.toweroffense.game.Location;
+import lombok.Getter;
+
 public class Map {
-   private final int width;
-   private final int height;
+   private @Getter final int width;
+   private @Getter final int height;
    private final List<Location> path;
    private List<List<Tile>> map;
 
-   public Map( int width, int height, List<Location> path) {
+   public Map(final int width, final int height, final List<Location> path) {
       this.width = width;
       this.height = height;
       this.path = path;
-      this.map = map;
    }
-   
-   public Tile getTile(int x, int y){
-      return map.get(x).get(y);
+
+   private class Tile {
+      public @Getter final int x;
+      public @Getter final int y;
+
+      public Tile (final int x, final int y) {
+         this.x = x;
+         this.y = y;
+      }
    }
-   
-   public int getWidth() {
-      return width;
+
+   public Tile getTile(int x, int y) {
+      Tile tile = map.get(x).get(y);
+      return tile;
    }
-   
-   public int getHeight() {
-      return height;
-   }
-   
+
    public List<Location> getPath() {
-      return path;
+      List<Location> newPath = path;
+      return newPath;
    }
 }
