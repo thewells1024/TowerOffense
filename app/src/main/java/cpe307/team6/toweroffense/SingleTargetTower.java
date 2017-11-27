@@ -10,7 +10,6 @@ public class SingleTargetTower implements Tower {
    private final static int damage;
    private final static Priority priority;
    private final static List<Location> path;
-   private final static int player;
 
    public List<Unit> selectTargetByPriority(final List<Unit> units){
       switch(this.priority){
@@ -83,13 +82,7 @@ public class SingleTargetTower implements Tower {
    }
 
    private double distanceToBase(Location loc){
-      int index;
-      if (player = 1){
-         index = 0;
-      }
-      else{
-         index = path.size() - 1;
-      }
+      int index = path.size() - 1;
       Location pathLoc = new Location((int)(loc.getx()),
                                       (int)(loc.gety())); 
       int unitIndex = path.indexOf(pathLoc);
