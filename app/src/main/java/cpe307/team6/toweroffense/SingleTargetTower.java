@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Collections;
+import java.util.ArrayList;
 
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
@@ -21,72 +22,64 @@ public class SingleTargetTower implements Tower {
             return selectFirstTarget(units);
          case LAST:
             return selectLastTarget(units);
+      }
    }
 
    public List<Unit> selectFirstTarget(final List<Unit> units){
       Unit returnedUnit;
       for(Unit unit: units) {
-         if(distanceToBase(unit.getLocation())
-            > distanceToBase(returnedUnit.getLocation())
-            && getDistance(returnedUnit.getLocation(), unit.getLocation()
-            < attackDistance) {
+         if(returnedUnit.getLocation().getDistance(unit.getLocation())
+            <= attackDistance && distanceToBase(unit.getLocation())
+            > distanceToBase(returnedUnit.getLocation())){
+
             returnedUnit = unit;
-            
          }
       }
-      return singletonList(unit);
+      return returnedUnit != null ? Collections.singletonList(unit) :
+                                    new ArrayList<>();
    }
 
    public List<Unit> selectLastTarget(final List<Unit> units){
       Unit returnedUnit;
       for(Unit unit: units) {
-         if(distanceToBase(unit.getLocation())
-            > distanceToBase(returnedUnit.getLocation())
-            && getDistance(returnedUnit.getLocation(), unit.getLocation()
-            < attackDistance) {
+         if(returnedUnit.getLocation().getDistance(unit.getLocation())
+            <= attackDistance && distanceToBase(unit.getLocation())
+            < distanceToBase(returnedUnit.getLocation())){
+
             returnedUnit = unit;
          }
       }
-      return singletonList(unit)
+      return returnedUnit != null ? Collections.singletonList(unit) :
+                                    new ArrayList<>();
    }
 
    public List<Unit> selectClosestTarget(final List<Unit> units){
-      List<Unit> returnedUnit = new ArrayList<Unit>();
+      Unit returnedUnit;
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
-         if(distance < attackDistance && distance < minDistance) {
-
-            if(returnedUnit.size() == 0){
-               returnedUnit.add(unit);
-            }
-            else{
-               returnedUnit.set(0, unit);
-            }
-            minDistance = distance;
+         if(distance <= attackDistance && distance < minDistance) {
+            returnedUnit = unit
+            minDistance = distance
          }
       }
-      return singletonList(returnedUnit);
+      return returnedUnit != null ? Collections.singletonList(unit) :
+                                    new ArrayList<>();
    }
 
    public List<Unit> selectHealthiestTarget(final List<Unit> units){
-      List<Unit> returnedUnit = new ArrayList<Unit>();
+      Unit returnedUnit;
       int maxHealth = 0;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
          int curHealth = unit.getHealth()
-         if(distance < attackDistance && curHealth > maxHealth) {
-
-            if(returnedUnit.size() == 0){
-               returnedUnit.add(unit);
-            }
-            else{
-               returnedUnit.set(0, unit);
-            }
+         if(distance <= attackDistance && curHealth > maxHealth) {
+            returnedUnit = unit;
             maxHealth = health;
          }
       }
-      return singletonList(returnedUnit);
+      return returnedUnit != null ? Collections.singletonList(unit) :
+                                    new ArrayList<>();
    }
 
    private double distanceToBase(Location loc){
@@ -97,16 +90,10 @@ public class SingleTargetTower implements Tower {
       else{
          index = path.size() - 1;
       }
-      Location pathLoc = new Location((int)loc.getx(), (int)loc.gety()); 
+      Location pathLoc = new Location(Math.round(loc.getx()),
+                                      Math.round(loc.gety())); 
       int unitIndex = path.indexOf(pathLoc);
       return Math.abs(index - unitIndex);
          
-   }
-
-   private double getDistance(Location loc1, Location loc2){
-
-      double xDist = loc1.getx() - loc2.getx();
-      double yDist = loc1.gety() - loc2.gety();
-      return Math.sqrt(xDist*xDist + yDist*yDist);
    }
 }
