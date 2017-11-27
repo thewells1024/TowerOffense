@@ -1,15 +1,12 @@
-import cpe307.team6.toweroffense.game.interfaces.Unit;
+package cpe307.team6.toweroffense.game.interfaces;
 
-import java.lang.Enum;
 import java.util.List;
 
-public interface Tower{
+public interface Tower {
+   enum Priority {
+      DISTANCE, HEALTH, FIRST, LAST
+   }
 
-	public enum Priority {
-		DISTANCE, HEALTH, FIRST, LAST
-	};
-	
-	public void setPriority(Priority priority);
-
-	public void attack(List<Unit> units);
+   void setPriority(Priority priority);
+   void attack(List<Unit> units);
 }

@@ -5,8 +5,8 @@ import cpe307.team6.toweroffense.game.Location;
 import java.util.List;
 
 public interface Unit {
-   public Location move(List<Location> path);
-   public Location getLocation();
-   public int getAttack();
-   public boolean takeDamage(int amount);
+   Location move(List<Location> path);
+   Location getLocation();
+   int getAttack();
+   boolean takeDamage(int amount);
 }
