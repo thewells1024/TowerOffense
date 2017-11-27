@@ -26,14 +26,15 @@ public class SingleTargetTower implements Tower {
 
    public List<Unit> selectFirstTarget(final List<Unit> units){
       Unit returnedUnit;
-      double distance;
+      double maxDistance = 0;
       for(Unit unit: units) {
-         distance = distanceToBase(returnedUnit.getLocation());
-         if(returnedUnit.getLocation().getDistance(unit.getLocation())
-            <= attackDistance && distanceToBase(unit.getLocation())
-            > distanceToBase(returnedUnit.getLocation())){
+         double distance = distanceToBase(unit.getLocation());
+         double towerDistance = unit.getLocation().getDistance(this.location);
+         if(towerDistance <= attackDistance 
+            && distanceToBase(unit.getLocation()) > maxDistance){
 
             returnedUnit = unit;
+            maxDistance = distance;
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
@@ -42,14 +43,15 @@ public class SingleTargetTower implements Tower {
 
    public List<Unit> selectLastTarget(final List<Unit> units){
       Unit returnedUnit;
-      double distance;
+      double minDistance = Integer.MAX_VALUE;
       for(Unit unit: units) {
-         distance = distanceToBase(returnedUnit.getLocation());
-         if(returnedUnit.getLocation().getDistance(unit.getLocation())
-            <= attackDistance && distanceToBase(unit.getLocation())
-            < distance){
+         double distance = distanceToBase(unit.getLocation());
+         double towerDistance = unit.getLocation().getDistance(this.location);
+         if(towerDistance <= attackDistance 
+            && distanceToBase(unit.getLocation()) < minDistance){
 
             returnedUnit = unit;
+            minDistance = distance;
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
@@ -62,8 +64,8 @@ public class SingleTargetTower implements Tower {
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
          if(distance <= attackDistance && distance < minDistance) {
-            returnedUnit = unit
-            minDistance = distance
+            returnedUnit = unit;
+            minDistance = distance;
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
@@ -75,7 +77,7 @@ public class SingleTargetTower implements Tower {
       int maxHealth = 0;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
-         int curHealth = unit.getHealth()
+         int curHealth = unit.getHealth();
          if(distance <= attackDistance && curHealth > maxHealth) {
             returnedUnit = unit;
             maxHealth = health;
@@ -88,8 +90,8 @@ public class SingleTargetTower implements Tower {
    private double distanceToBase(Location loc){
       int index = path.size() - 1;
       Location pathLoc = new Location((int)(loc.getx()),
-                                      (int)(loc.gety())); 
+         (int)(loc.gety())); 
       int unitIndex = path.indexOf(pathLoc);
-      return Math.abs(index - unitIndex) - (loc.getDistance(pathLoc);
+      return (index - unitIndex) - loc.getDistance(pathLoc);
    }
 }
