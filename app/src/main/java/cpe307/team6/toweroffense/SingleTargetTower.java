@@ -36,7 +36,7 @@ public class SingleTargetTower implements Tower {
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
-                                    new ArrayList<>();
+         new ArrayList<>();
    }
 
    public List<Unit> selectLastTarget(final List<Unit> units){
@@ -50,7 +50,7 @@ public class SingleTargetTower implements Tower {
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
-                                    new ArrayList<>();
+         new ArrayList<>();
    }
 
    public List<Unit> selectClosestTarget(final List<Unit> units){
@@ -64,7 +64,7 @@ public class SingleTargetTower implements Tower {
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
-                                    new ArrayList<>();
+         new ArrayList<>();
    }
 
    public List<Unit> selectHealthiestTarget(final List<Unit> units){
@@ -79,7 +79,7 @@ public class SingleTargetTower implements Tower {
          }
       }
       return returnedUnit != null ? Collections.singletonList(unit) :
-                                    new ArrayList<>();
+         new ArrayList<>();
    }
 
    private double distanceToBase(Location loc){
@@ -90,10 +90,9 @@ public class SingleTargetTower implements Tower {
       else{
          index = path.size() - 1;
       }
-      Location pathLoc = new Location(Math.round(loc.getx()),
-                                      Math.round(loc.gety())); 
+      Location pathLoc = new Location((int)(loc.getx()),
+                                      (int)(loc.gety())); 
       int unitIndex = path.indexOf(pathLoc);
-      return Math.abs(index - unitIndex);
-         
+      return Math.abs(index - unitIndex) - (loc.getDistance(pathLoc);
    }
 }
