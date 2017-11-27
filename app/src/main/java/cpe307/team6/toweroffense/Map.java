@@ -16,23 +16,44 @@ public class Map {
       this.path = path;
    }
 
-   private class Tile {
+   private class Tile implements Cloneable{
       public @Getter final int x;
       public @Getter final int y;
+      private boolean hasTower;
+      private boolean canHoldTower;
 
       public Tile (final int x, final int y) {
          this.x = x;
          this.y = y;
+         this.hasTower = false;
+      }
+
+      public Tile clone() throws CloneNotSupportedException {
+         return (Tile) super.clone();
+      }
+
+      public boolean hasTower() {
+         return this.hasTower;
+      }
+
+      public boolean canHoldTower() {
+         Location location = new Location((double) this.x, (double) this.y);
+         if (path.contains(location)) {
+            return false;
+         }
+         else {
+            return true;
+         }
       }
    }
 
    public Tile getTile(int x, int y) {
-      Tile tile = map.get(x).get(y);
-      return tile;
+      Tile clone = (Tile) map.get(x).get(y).clone();
+      return clone;
    }
 
    public List<Location> getPath() {
-      List<Location> newPath = path;
+      List<Location> newPath = path.clone();
       return newPath;
    }
 }
