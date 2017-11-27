@@ -1,5 +1,5 @@
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Collections;
 
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
@@ -7,11 +7,12 @@ public class SingleTargetTower implements Tower {
    @Getter private final Location location;
    private final static int attackDistance;
    private final static int damage;
+   private final static Priority priority;
    private final static List<Location> path;
+   private final static int player;
 
-   public List<Unit> selectTargetByPriority(List<Unit> units, Priority priority){
-      List<Unit> returnedUnit = new ArrayList<Unit>();
-      switch(priority){
+   public List<Unit> selectTargetByPriority(final List<Unit> units){
+      switch(this.priority){
          case DISTANCE:
             return selectClosestTarget(units);
          case HEALTH:
@@ -22,32 +23,34 @@ public class SingleTargetTower implements Tower {
             return selectLastTarget(units);
    }
 
-   public List<Unit> selectFirstTarget(List<Unit> units){
-      List<Unit> returnedUnit = new ArrayList<Unit>();
+   public List<Unit> selectFirstTarget(final List<Unit> units){
+      Unit returnedUnit;
       for(Unit unit: units) {
-         if(unit.getLocation().getDistance(this.location)
+         if(distanceToBase(unit.getLocation())
+            > distanceToBase(returnedUnit.getLocation())
+            && getDistance(returnedUnit.getLocation(), unit.getLocation()
             < attackDistance) {
+            returnedUnit = unit;
             
-            returnedUnit.add(unit)
-            return returnedUnit;
          }
       }
+      return singletonList(unit);
    }
 
-   public List<Unit> selectLastTarget(List<Unit> units){
-      List<Unit> returnedUnit = new ArrayList<Unit>();
-      for(int i; i >= 0; i--){
-         Unit unit = units.get(i);
-         if(unit.getLocation().getDistance(this.location)
+   public List<Unit> selectLastTarget(final List<Unit> units){
+      Unit returnedUnit;
+      for(Unit unit: units) {
+         if(distanceToBase(unit.getLocation())
+            > distanceToBase(returnedUnit.getLocation())
+            && getDistance(returnedUnit.getLocation(), unit.getLocation()
             < attackDistance) {
-            
-            returnedUnit.add(unit)
-            return returnedUnit;
+            returnedUnit = unit;
          }
       }
+      return singletonList(unit)
    }
 
-   public List<Unit> selectClosestTarget(List<Unit> units){
+   public List<Unit> selectClosestTarget(final List<Unit> units){
       List<Unit> returnedUnit = new ArrayList<Unit>();
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit : units){
@@ -63,10 +66,10 @@ public class SingleTargetTower implements Tower {
             minDistance = distance;
          }
       }
-      return returnedUnit;
+      return singletonList(returnedUnit);
    }
 
-   public List<Unit> selectHealthiestTarget(List<Unit> units){
+   public List<Unit> selectHealthiestTarget(final List<Unit> units){
       List<Unit> returnedUnit = new ArrayList<Unit>();
       int maxHealth = 0;
       for(Unit unit : units){
@@ -83,6 +86,27 @@ public class SingleTargetTower implements Tower {
             maxHealth = health;
          }
       }
-      return returnedUnit;
+      return singletonList(returnedUnit);
+   }
+
+   private double distanceToBase(Location loc){
+      int index;
+      if (player = 1){
+         index = 0;
+      }
+      else{
+         index = path.size() - 1;
+      }
+      Location pathLoc = new Location((int)loc.getx(), (int)loc.gety()); 
+      int unitIndex = path.indexOf(pathLoc);
+      return Math.abs(index - unitIndex);
+         
+   }
+
+   private double getDistance(Location loc1, Location loc2){
+
+      double xDist = loc1.getx() - loc2.getx();
+      double yDist = loc1.gety() - loc2.gety();
+      return Math.sqrt(xDist*xDist + yDist*yDist);
    }
 }
