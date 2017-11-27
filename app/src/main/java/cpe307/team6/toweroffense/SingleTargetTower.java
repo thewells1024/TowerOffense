@@ -26,7 +26,9 @@ public class SingleTargetTower implements Tower {
 
    public List<Unit> selectFirstTarget(final List<Unit> units){
       Unit returnedUnit;
+      double distance;
       for(Unit unit: units) {
+         distance = distanceToBase(returnedUnit.getLocation());
          if(returnedUnit.getLocation().getDistance(unit.getLocation())
             <= attackDistance && distanceToBase(unit.getLocation())
             > distanceToBase(returnedUnit.getLocation())){
@@ -40,10 +42,12 @@ public class SingleTargetTower implements Tower {
 
    public List<Unit> selectLastTarget(final List<Unit> units){
       Unit returnedUnit;
+      double distance;
       for(Unit unit: units) {
+         distance = distanceToBase(returnedUnit.getLocation());
          if(returnedUnit.getLocation().getDistance(unit.getLocation())
             <= attackDistance && distanceToBase(unit.getLocation())
-            < distanceToBase(returnedUnit.getLocation())){
+            < distance){
 
             returnedUnit = unit;
          }
