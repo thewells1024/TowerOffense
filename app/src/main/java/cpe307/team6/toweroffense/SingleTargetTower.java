@@ -24,7 +24,7 @@ public class SingleTargetTower implements Tower {
       }
    }
 
-   public List<Unit> selectFirstTarget(final List<Unit> units){
+   public List<Unit> selectLastTarget(final List<Unit> units){
       Unit returnedUnit;
       double maxDistance = 0;
       for(Unit unit: units) {
@@ -41,7 +41,7 @@ public class SingleTargetTower implements Tower {
          new ArrayList<>();
    }
 
-   public List<Unit> selectLastTarget(final List<Unit> units){
+   public List<Unit> selectFirstTarget(final List<Unit> units){
       Unit returnedUnit;
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit: units) {
