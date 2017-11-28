@@ -2,6 +2,11 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
+import Location;
+
+import lombok.Getter;
+import lombok.AllArgsConstructor;
+
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
 
@@ -26,12 +31,12 @@ public class SingleTargetTower implements Tower {
 
    public List<Unit> selectLastTarget(final List<Unit> units){
       Unit returnedUnit;
-      double maxDistance = 0;
+      double maxDistance = Integer.MIN_VALUE;
       for(Unit unit: units) {
          double distance = distanceToBase(unit.getLocation());
          double towerDistance = unit.getLocation().getDistance(this.location);
          if(towerDistance <= attackDistance 
-            && distanceToBase(unit.getLocation()) > maxDistance){
+            && distance > maxDistance){
 
             returnedUnit = unit;
             maxDistance = distance;
@@ -48,7 +53,7 @@ public class SingleTargetTower implements Tower {
          double distance = distanceToBase(unit.getLocation());
          double towerDistance = unit.getLocation().getDistance(this.location);
          if(towerDistance <= attackDistance 
-            && distanceToBase(unit.getLocation()) < minDistance){
+            && distance < minDistance){
 
             returnedUnit = unit;
             minDistance = distance;
