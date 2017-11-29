@@ -5,9 +5,9 @@ import cpe307.team6.toweroffense.game.Location;
 import lombok.Getter;
 
 public class Map {
-   private @Getter final int width;
-   private @Getter final int height;
-   private final List<Location> path;
+   @Getter private final int width;
+   @Getter private  final int height;
+   @Getter private final List<Location> path;
    private List<List<Tile>> map;
 
    public Map(final int width, final int height, final List<Location> path) {
@@ -16,9 +16,7 @@ public class Map {
       this.path = path;
    }
 
-   private class Tile implements Cloneable{
-      public @Getter final int x;
-      public @Getter final int y;
+   private class Tile extends Location {
       private boolean hasTower;
       private boolean canHoldTower;
 
@@ -28,22 +26,12 @@ public class Map {
          this.hasTower = false;
       }
 
-      public Tile clone() throws CloneNotSupportedException {
-         return (Tile) super.clone();
-      }
-
       public boolean hasTower() {
          return this.hasTower;
       }
 
       public boolean canHoldTower() {
-         Location location = new Location((double) this.x, (double) this.y);
-         if (path.contains(location)) {
-            return false;
-         }
-         else {
-            return true;
-         }
+         return this.canHoldTower;
       }
    }
 
