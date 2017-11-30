@@ -1,15 +1,16 @@
+package cpe307.team6.toweroffense.game.interfaces;
+
 import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
-import Location;
+import game.Location;
 
 import lombok.Getter;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
-
    @Getter private final Location location;
    private final static int attackDistance;
    private final static int damage;
