@@ -1,15 +1,15 @@
 package cpe307.team6.toweroffense.game;
 
-import cpe307.team6.toweroffense.game.Location;
+import cpe307.team6.toweroffense.game.interfaces.Unit;
 
-import java.util.List;
+//import java.util.List;
 
-public class UnitOne {
+public class UnitOne implements Unit {
    // Location is used as a bounds check for the tile (x, y)
    // It specifies the location of the unit's  top-left corner for comparison to tiles
    private Location currentLocation;
-   private int attack;
-   private int health;
+   private double attack;
+   private double health;
    
    // public Location move(List<Location> path)
    // pathing implementation pending
@@ -37,7 +37,7 @@ public class UnitOne {
     * 
     * @param newAttack The new attack value for the unit
     */
-   public void setAttack(int newAttack) {
+   public void setAttack(double newAttack) {
 	  this.attack = newAttack;   
    }
    
@@ -46,7 +46,7 @@ public class UnitOne {
     * 
     * @return The unit's attack value
     */
-   public int getAttack() {
+   public double getAttack() {
 	  return this.attack;   
    }
    
@@ -55,8 +55,12 @@ public class UnitOne {
     * 
     * @param newHealth The new health value for the unit
     */
-   public void setHealth(int newHealth) {
-	  this.health = newHealth;   
+   public void setHealth(double newHealth) {
+      if (newHealth < 0) {
+         this.health = 0;
+      } else {
+         this.health = newHealth;
+      }
    }
    
    /**
@@ -64,7 +68,7 @@ public class UnitOne {
     * 
     * @return The current health value of the unit
     */
-   public int getHealth() {
+   public double getHealth() {
       return this.health;
    }
    
@@ -75,9 +79,12 @@ public class UnitOne {
     * @param amount The amount of damage to be dealt to the unit
     * @return Whether the unit has been killed (true) or not (false)
     */
-   public boolean takeDamage(int amount) {
+   public boolean takeDamage(double amount) {
 	  this.health -= amount;
+	  if (health < 0) {
+	     this.health = 0;
+	  }
 	  // Removal function to be added for 0 health
-	  return (this.health <= 0);
+	  return (this.health == 0);
    }
 }
