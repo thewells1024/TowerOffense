@@ -12,4 +12,10 @@ public class BaseTest {
       Base base = new Base(300, new Location(0,0), Collections.<Location>emptyList());
       assertEquals(200, base.takeDamage(100));
    }
+
+   @Test
+   public void testTakeDamageLargerThanHealth() {
+      Base base = new Base(300, new Location(0,0), Collections.<Location>emptyList());
+      assertEquals(0, base.takeDamage(400));
+   }
 }

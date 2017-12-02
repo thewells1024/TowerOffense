@@ -8,5 +8,6 @@ public interface Unit {
    Location move(List<Location> path);
    Location getLocation();
    int getAttack();
+   int getHealth();
    boolean takeDamage(int amount);
 }
