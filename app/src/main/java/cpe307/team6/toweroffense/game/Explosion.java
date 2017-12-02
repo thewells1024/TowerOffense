@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class Explosion extends AbstractGameObject {
-   private static int rowCount = 5;
-   private static int colCount = 5;
+   private static final int ROW_COUNT = 5;
+   private static final int COL_COUNT = 5;
 
    private int rowIndex = 0;
    private int colIndex = -1;
@@ -15,7 +15,7 @@ public class Explosion extends AbstractGameObject {
 
 
    public Explosion(final GameSurface gameSurface, final Bitmap image, final int xPos, final int yPos) {
-      super(image, rowCount, colCount, xPos, yPos);
+      super(image, ROW_COUNT, COL_COUNT, xPos, yPos);
 
       this.gameSurface = gameSurface;
    }
@@ -29,11 +29,11 @@ public class Explosion extends AbstractGameObject {
    public void update() {
       this.colIndex++;
 
-      if (this.colIndex >= colCount) {
+      if (this.colIndex >= COL_COUNT) {
          this.colIndex = 0;
          this.rowIndex++;
 
-         if (this.rowIndex >= rowCount) {
+         if (this.rowIndex >= ROW_COUNT) {
             this.finish = true;
          }
       }

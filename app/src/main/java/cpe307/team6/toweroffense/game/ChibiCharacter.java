@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class ChibiCharacter extends AbstractGameObject {
+   public static final float VELOCITY = 0.1f;
    private static final int ROW_TOP_TO_BOTTOM = 0;
    private static final int ROW_RIGHT_TO_LEFT = 1;
    private static final int ROW_LEFT_TO_RIGHT = 2;
    private static final int ROW_BOTTOM_TO_TOP = 3;
    // Velocity of game character (pixel/millisecond)
-   public static final float VELOCITY = 0.1f;
    private static final int CHARACTER_ROW_COUNT = 4;
    private static final int CHARACTER_COL_COUNT = 3;
    private static final int MILLI_SECONDS = 1000000;
