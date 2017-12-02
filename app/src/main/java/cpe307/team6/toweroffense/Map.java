@@ -18,12 +18,12 @@ public class Map {
       map = createMap(width, height, path);
    }
    
-   public List<List<Tile>> createMap(final int width, final int height, final List<Location> path) {
+   public static List<List<Tile>> createMap(final int width, final int height, final List<Location> path) {
       List<List<Tile>> returnMap = new ArrayList<>();
       for ( int i = 0; i < height; i++) {
          ArrayList<Tile> row = new ArrayList<>();
          for (int j = 0; j < width; j++) {
-            row.add(new Tile(i,j,path.contains(new Location(i,j))));           
+            row.add(new Tile(i,j,!path.contains(new Location(i,j))));           
          }
          returnMap.add(row);
       }
@@ -31,7 +31,7 @@ public class Map {
    }
    
    @Data
-   private class Tile extends Location implements Cloneable {
+   public class Tile extends Location implements Cloneable {
       private boolean hasTower;
       private final boolean canHoldTower;
       
@@ -41,8 +41,14 @@ public class Map {
          this.canHoldTower = canHoldTower;
       }
 
+      public Tile (final int x, final int y, boolean hasTower, final boolean canHoldTower) {
+         super(x,y);
+         this.hasTower = hasTower;
+         this. canHoldTower = canHoldTower;
+      }
+
       public Object clone() throws CloneNotSupportedException {
-         return super.clone();
+         return new Tile(x, y, hasTower, canHoldTower);
       }
    }
 
