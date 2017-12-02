@@ -5,61 +5,67 @@ import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
 
-    private boolean running;
-    private GameSurface gameSurface;
-    private SurfaceHolder surfaceHolder;
+   private boolean running;
+   private GameSurface gameSurface;
+   private SurfaceHolder surfaceHolder;
 
-    GameThread(GameSurface gameSurface, SurfaceHolder surfaceHolder)  {
-        this.gameSurface= gameSurface;
-        this.surfaceHolder= surfaceHolder;
-    }
+   private static int milliseconds = 1000000;
+   private static int waitTimeBound = 10;
 
-    @Override
-    public void run()  {
-        long startTime = System.nanoTime();
+   GameThread(final GameSurface gameSurface, final SurfaceHolder surfaceHolder) {
+      this.gameSurface = gameSurface;
+      this.surfaceHolder = surfaceHolder;
+   }
 
-        while(running)  {
-            Canvas canvas = null;
-            try {
-                // Get Canvas from Holder and lock it.
-                canvas = this.surfaceHolder.lockCanvas();
+   @Override
+   public void run() {
+      long startTime = System.nanoTime();
 
-                // Synchronized
-                synchronized (canvas)  {
-                    this.gameSurface.update();
-                    this.gameSurface.draw(canvas);
-                }
-            }catch(Exception e)  {
-                // Do nothing.
-                System.out.println("GameThread: " + e);
-            } finally {
-                if(canvas!= null)  {
-                    // Unlock Canvas.
-                    this.surfaceHolder.unlockCanvasAndPost(canvas);
-                }
+      while (running) {
+         Canvas canvas = null;
+         try {
+            // Get Canvas from Holder and lock it.
+            canvas = this.surfaceHolder.lockCanvas();
+
+            // Synchronized
+            synchronized (canvas) {
+               this.gameSurface.update();
+               this.gameSurface.draw(canvas);
             }
-            long now = System.nanoTime() ;
-            // Interval to redraw game
-            // (Change nanoseconds to milliseconds)
-            long waitTime = (now - startTime)/1000000;
-            if(waitTime < 10)  {
-                waitTime= 10; // Millisecond.
+         } catch (Exception eException) {
+            // Do nothing.
+            System.out.println("GameThread: " + eException);
+         } finally {
+            if (canvas != null) {
+               // Unlock Canvas.
+               this.surfaceHolder.unlockCanvasAndPost(canvas);
             }
-            System.out.print(" Wait Time = "+ waitTime);
+         }
 
-            try {
-                // Sleep.
-                sleep(waitTime);
-            } catch(InterruptedException e)  {
-                System.out.println(e);
-            }
+         final long now = System.nanoTime();
 
-            startTime = System.nanoTime();
-            System.out.print(".");
-        }
-    }
+         // Interval to redraw game
+         // (Change nanoseconds to milliseconds)
+         long waitTime = (now - startTime) / milliseconds;
 
-    void setRunning(boolean running)  {
-        this.running= running;
-    }
+         if (waitTime < waitTimeBound) {
+            waitTime = waitTimeBound; // Millisecond.
+         }
+         System.out.print(" Wait Time = " + waitTime);
+
+         try {
+            // Sleep.
+            sleep(waitTime);
+         } catch (InterruptedException eException) {
+            System.out.println(eException);
+         }
+
+         startTime = System.nanoTime();
+         System.out.print(".");
+      }
+   }
+
+   void setRunning(final boolean running) {
+      this.running = running;
+   }
 }

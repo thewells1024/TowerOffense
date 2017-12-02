@@ -3,60 +3,68 @@ package cpe307.team6.toweroffense.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Map extends GameObject {
-    // Row index of Image are being used.
-    private int rowUsing;
-    private int colUsing;
+public class Map extends AbstractGameObject {
+   // Row index of Image are being used.
+   private int rowUsing;
+   private int colUsing;
 
-    private Bitmap[][] tiles;
+   private Bitmap[][] tiles;
 
-    private long lastDrawNanoTime = -1;
+   private long lastDrawNanoTime = -1;
 
-    private GameSurface gameSurface;
+   private GameSurface gameSurface;
 
-    Map(GameSurface gameSurface, Bitmap image) {
-        super(image, 30, 30);
-        int tileRowCount = 9;
-        int tileColCount = 8;
+   private static int rowCount = 30;
+   private static int colCount = 30;
+   private static int tileRowCountConst = 9;
+   private static int tileColCountConst = 8;
+   private static int bitMapRowCount = 6;
+   private static int bitMapColCount = 20;
 
-        this.gameSurface = gameSurface;
+   Map(final GameSurface gameSurface, final Bitmap image) {
+      super(image, rowCount, colCount);
+      final int tileRowCount = tileRowCountConst;
+      final int tileColCount = tileColCountConst;
 
-        this.tiles = new Bitmap[tileRowCount][tileColCount]; // 30 x 30
+      this.gameSurface = gameSurface;
 
-        for(int row = 0; row < tileRowCount; row++ ) {
-            for (int col = 0; col < tileColCount; col++) {
-                this.tiles[row][col] = this.createSubImageAt(row + 6, col + 20);
-            }
-        }
-    }
+      this.tiles = new Bitmap[tileRowCount][tileColCount]; // 30 x 30
+
+      for (int row = 0; row < tileRowCount; row++) {
+         for (int col = 0; col < tileColCount; col++) {
+            this.tiles[row][col] = this.createSubImageAt(row + bitMapRowCount, col + bitMapColCount);
+         }
+      }
+   }
 
 
-    public Map(GameSurface gameSurface) {
-        super(30, 30);
-        int tileRowCount = 9;
-        int tileColCount = 8;
+   public Map(final GameSurface gameSurface) {
+      super(rowCount, colCount);
+      final int tileRowCount = tileRowCountConst;
+      final int tileColCount = tileColCountConst;
 
-        this.gameSurface = gameSurface;
+      this.gameSurface = gameSurface;
 
-        this.tiles = new Bitmap[tileRowCount][tileColCount]; // 30 x 30
-    }
+      this.tiles = new Bitmap[tileRowCount][tileColCount]; // 30 x 30
+   }
 
-    public void update()  {}
+   public void update() {
+   }
 
-    void draw(Canvas canvas)  {
-        // Bitmap bitmap = this.getCurrentMoveBitmap();
+   void draw(final Canvas canvas) {
+      // Bitmap bitmap = this.getCurrentMoveBitmap();
 
-        for (int i = 0; i < canvas.getWidth() / this.objectWidth; i++) {
-            for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
-                canvas.drawBitmap(tiles[0][0], i * this.objectWidth, j * this.objectHeight, null);
-            }
-        }
+      for (int i = 0; i < canvas.getWidth() / this.objectWidth; i++) {
+         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
+            canvas.drawBitmap(tiles[0][0], i * this.objectWidth, j * this.objectHeight, null);
+         }
+      }
 
-        // Last draw time.
-        this.lastDrawNanoTime= System.nanoTime();
-    }
+      // Last draw time.
+      this.lastDrawNanoTime = System.nanoTime();
+   }
 
-    public Bitmap[][] getTiles() {
-        return this.tiles;
-    }
+   public Bitmap[][] getTiles() {
+      return this.tiles;
+   }
 }

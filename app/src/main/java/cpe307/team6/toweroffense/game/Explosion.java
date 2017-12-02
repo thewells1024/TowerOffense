@@ -3,53 +3,58 @@ package cpe307.team6.toweroffense.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Explosion extends GameObject {
+public class Explosion extends AbstractGameObject {
 
-    private int rowIndex = 0 ;
-    private int colIndex = -1 ;
+   private int rowIndex = 0;
+   private int colIndex = -1;
 
-    private boolean finish = false;
-    private GameSurface gameSurface;
+   private boolean finish = false;
+   private GameSurface gameSurface;
 
-    public Explosion(GameSurface GameSurface, Bitmap image, int x, int y) {
-        super(image, 5, 5, x, y);
+   private static int rowCount = 5;
+   private static int colCount = 5;
 
-        this.gameSurface= GameSurface;
-    }
+   public Explosion(final GameSurface gameSurface, final Bitmap image, final int xPos, final int yPos) {
+      super(image, rowCount, colCount, xPos, yPos);
 
-    public Explosion(int x, int y) {
-        super(x,y);
-        this.rowIndex = x;
-        this.colIndex = y;
-    }
+      this.gameSurface = gameSurface;
+   }
 
-    public void update()  {
-        this.colIndex++;
+   public Explosion(final int xPos, final int yPos) {
+      super(xPos, yPos);
+      this.rowIndex = xPos;
+      this.colIndex = yPos;
+   }
 
-        if(this.colIndex >= this.colCount)  {
-            this.colIndex =0;
-            this.rowIndex++;
+   public void update() {
+      this.colIndex++;
 
-            if(this.rowIndex>= this.rowCount)  {
-                this.finish= true;
-            }
-        }
-    }
+      if (this.colIndex >= colCount) {
+         this.colIndex = 0;
+         this.rowIndex++;
 
-    public void draw(Canvas canvas)  {
-        if(!finish)  {
-            Bitmap bitmap= this.createSubImageAt(rowIndex,colIndex);
-            canvas.drawBitmap(bitmap, this.x, this.y,null);
-        }
-    }
+         if (this.rowIndex >= rowCount) {
+            this.finish = true;
+         }
+      }
+   }
 
-    public boolean isFinish() {
-        return finish;
-    }
+   public void draw(final Canvas canvas) {
+      if (!finish) {
+         final Bitmap bitmap = this.createSubImageAt(rowIndex, colIndex);
+         canvas.drawBitmap(bitmap, this.x, this.y, null);
+      }
+   }
 
-    public int getRowIndex() {
-        return this.rowIndex;
-    }
+   public boolean isFinish() {
+      return finish;
+   }
 
-    public int getColIndex() { return this.colIndex; }
+   public int getRowIndex() {
+      return this.rowIndex;
+   }
+
+   public int getColIndex() {
+      return this.colIndex;
+   }
 }
