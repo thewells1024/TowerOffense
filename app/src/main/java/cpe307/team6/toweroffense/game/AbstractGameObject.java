@@ -4,12 +4,11 @@ import android.graphics.Bitmap;
 
 public abstract class AbstractGameObject {
    private Bitmap image;
+   private int imageWidth = 0;
+   private int imageHeight = 0;
 
    final int colCount;
    final int rowCount;
-
-   private int imageWidth = 0;
-   private int imageHeight = 0;
 
    int objectWidth = 0;
    int objectHeight = 0;
@@ -18,7 +17,7 @@ public abstract class AbstractGameObject {
    int y;
 
    // Draw object at specific x, y
-   public AbstractGameObject(final Bitmap image, final int rowCount, final int colCount, int xPos, int yPos) {
+   public AbstractGameObject(final Bitmap image, final int rowCount, final int colCount, final int xPos, final int yPos) {
 
       this.image = image;
 

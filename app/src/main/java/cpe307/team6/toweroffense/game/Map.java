@@ -4,6 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class Map extends AbstractGameObject {
+   private static final int rowCount = 30;
+   private static final int colCount = 30;
+   private static final int tileRowCountConst = 9;
+   private static final int tileColCountConst = 8;
+   private static final int bitMapRowCount = 6;
+   private static final int bitMapColCount = 20;
+
    // Row index of Image are being used.
    private int rowUsing;
    private int colUsing;
@@ -13,13 +20,6 @@ public class Map extends AbstractGameObject {
    private long lastDrawNanoTime = -1;
 
    private GameSurface gameSurface;
-
-   private static int rowCount = 30;
-   private static int colCount = 30;
-   private static int tileRowCountConst = 9;
-   private static int tileColCountConst = 8;
-   private static int bitMapRowCount = 6;
-   private static int bitMapColCount = 20;
 
    Map(final GameSurface gameSurface, final Bitmap image) {
       super(image, rowCount, colCount);

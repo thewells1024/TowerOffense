@@ -4,13 +4,12 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
+   private static final int milliseconds = 1000000;
+   private static final int waitTimeBound = 10;
 
    private boolean running;
    private GameSurface gameSurface;
    private SurfaceHolder surfaceHolder;
-
-   private static int milliseconds = 1000000;
-   private static int waitTimeBound = 10;
 
    GameThread(final GameSurface gameSurface, final SurfaceHolder surfaceHolder) {
       this.gameSurface = gameSurface;

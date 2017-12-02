@@ -8,7 +8,14 @@ public class ChibiCharacter extends AbstractGameObject {
    private static final int ROW_RIGHT_TO_LEFT = 1;
    private static final int ROW_LEFT_TO_RIGHT = 2;
    private static final int ROW_BOTTOM_TO_TOP = 3;
+   // Velocity of game character (pixel/millisecond)
+   public static final float VELOCITY = 0.1f;
+   private static final int CharacterRowCount = 4;
+   private static final int CharacterColCount = 3;
+   private static final int MilliSeconds = 1000000;
 
+   private static int movingVectorX = 10;
+   private static int movingVectorY = 5;
    // Row index of Image are being used.
    private int rowUsing = ROW_LEFT_TO_RIGHT;
 
@@ -19,19 +26,9 @@ public class ChibiCharacter extends AbstractGameObject {
    private Bitmap[] topToBottoms;
    private Bitmap[] bottomToTops;
 
-   // Velocity of game character (pixel/millisecond)
-   public static final float VELOCITY = 0.1f;
-
-   private int movingVectorX = 10;
-   private int movingVectorY = 5;
-
    private long lastDrawNanoTime = -1;
 
    private GameSurface gameSurface;
-
-   private static int CharacterRowCount = 4;
-   private static int CharacterColCount = 3;
-   private static int MilliSeconds = 1000000;
 
    public ChibiCharacter(final GameSurface gameSurface, final Bitmap image, final int xPos, final int yPos) {
       super(image, CharacterRowCount, CharacterColCount, xPos, yPos);
@@ -106,18 +103,18 @@ public class ChibiCharacter extends AbstractGameObject {
 
       if (this.x < 0) {
          this.x = 0;
-         this.movingVectorX = -this.movingVectorX;
+         movingVectorX = -movingVectorX;
       } else if (this.x > this.gameSurface.getWidth() - objectWidth) {
          this.x = this.gameSurface.getWidth() - objectWidth;
-         this.movingVectorX = -this.movingVectorX;
+         movingVectorX = -movingVectorX;
       }
 
       if (this.y < 0) {
          this.y = 0;
-         this.movingVectorY = -this.movingVectorY;
+         movingVectorY = -movingVectorY;
       } else if (this.y > this.gameSurface.getHeight() - objectHeight) {
          this.y = this.gameSurface.getHeight() - objectHeight;
-         this.movingVectorY = -this.movingVectorY;
+         movingVectorY = -movingVectorY;
       }
 
       // rowUsing
@@ -148,15 +145,15 @@ public class ChibiCharacter extends AbstractGameObject {
    }
 
    public void setMovingVector(final int movingVectorX, final int movingVectorY) {
-      this.movingVectorX = movingVectorX;
-      this.movingVectorY = movingVectorY;
+      ChibiCharacter.movingVectorX = movingVectorX;
+      ChibiCharacter.movingVectorY = movingVectorY;
    }
 
    public int getMovingVectorX() {
-      return this.movingVectorX;
+      return movingVectorX;
    }
 
    public int getMovingVectorY() {
-      return this.movingVectorY;
+      return movingVectorY;
    }
 }

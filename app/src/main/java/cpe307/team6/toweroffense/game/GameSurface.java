@@ -10,12 +10,12 @@ import android.view.SurfaceView;
 import cpe307.team6.toweroffense.R;
 
 public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
+   private static final int xPos = 100;
+   private static final int yPos = 50;
+
    private GameThread gameThread;
    private Map map;
    private ChibiCharacter chibi;
-
-   private static int xPos = 100;
-   private static int yPos = 50;
 
    public GameSurface(final Context context) {
       super(context);
@@ -40,9 +40,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
    // Implements method of SurfaceHolder.Callback
    @Override
-   public void surfaceCreated(SurfaceHolder holder) {
-      Bitmap mapBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.tiles);
-      Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi);
+   public void surfaceCreated(final SurfaceHolder holder) {
+      final Bitmap mapBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.tiles);
+      final Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi);
       this.map = new Map(this, mapBitmap);
       this.chibi = new ChibiCharacter(this, chibiBitmap1, xPos, yPos);
       this.gameThread = new GameThread(this, holder);
