@@ -10,12 +10,14 @@ public class ChibiCharacter extends AbstractGameObject {
    private static final int ROW_BOTTOM_TO_TOP = 3;
    // Velocity of game character (pixel/millisecond)
    public static final float VELOCITY = 0.1f;
-   private static final int CharacterRowCount = 4;
-   private static final int CharacterColCount = 3;
-   private static final int MilliSeconds = 1000000;
+   private static final int CHARACTER_ROW_COUNT = 4;
+   private static final int CHARACTER_COL_COUNT = 3;
+   private static final int MILLI_SECONDS = 1000000;
+   private static final int INIT_X = 10;
+   private static final int INIT_Y = 5;
 
-   private static int movingVectorX = 10;
-   private static int movingVectorY = 5;
+   private static int movingVectorX = INIT_X;
+   private static int movingVectorY = INIT_Y;
    // Row index of Image are being used.
    private int rowUsing = ROW_LEFT_TO_RIGHT;
 
@@ -31,7 +33,7 @@ public class ChibiCharacter extends AbstractGameObject {
    private GameSurface gameSurface;
 
    public ChibiCharacter(final GameSurface gameSurface, final Bitmap image, final int xPos, final int yPos) {
-      super(image, CharacterRowCount, CharacterColCount, xPos, yPos);
+      super(image, CHARACTER_ROW_COUNT, CHARACTER_COL_COUNT, xPos, yPos);
 
       this.gameSurface = gameSurface;
 
@@ -88,7 +90,7 @@ public class ChibiCharacter extends AbstractGameObject {
          lastDrawNanoTime = now;
       }
       // Change nanoseconds to milliseconds (1 nanosecond = 1000000 milliseconds).
-      final int deltaTime = (int) ((now - lastDrawNanoTime) / MilliSeconds);
+      final int deltaTime = (int) ((now - lastDrawNanoTime) / MILLI_SECONDS);
 
       // Distance moves
       final float distance = VELOCITY * deltaTime;

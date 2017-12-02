@@ -4,8 +4,8 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class GameThread extends Thread {
-   private static final int milliseconds = 1000000;
-   private static final int waitTimeBound = 10;
+   private static final int MILLI_SECONDS = 1000000;
+   private static final int WAIT_TIME_BOUND = 10;
 
    private boolean running;
    private GameSurface gameSurface;
@@ -45,10 +45,10 @@ public class GameThread extends Thread {
 
          // Interval to redraw game
          // (Change nanoseconds to milliseconds)
-         long waitTime = (now - startTime) / milliseconds;
+         long waitTime = (now - startTime) / MILLI_SECONDS;
 
-         if (waitTime < waitTimeBound) {
-            waitTime = waitTimeBound; // Millisecond.
+         if (waitTime < WAIT_TIME_BOUND) {
+            waitTime = WAIT_TIME_BOUND; // Millisecond.
          }
          System.out.print(" Wait Time = " + waitTime);
 

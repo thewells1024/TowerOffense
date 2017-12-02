@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 public class MapView extends AbstractGameObject {
-   private static final int rowCount = 30;
-   private static final int colCount = 30;
-   private static final int tileRowCountConst = 9;
-   private static final int tileColCountConst = 8;
-   private static final int bitMapRowCount = 6;
-   private static final int bitMapColCount = 20;
+   private static final int ROW_COUNT = 30;
+   private static final int COL_COUNT = 30;
+   private static final int TILE_ROW_COUNT_CONST = 9;
+   private static final int TILE_COL_COUNT_CONST = 8;
+   private static final int BIT_MAP_ROW_COUNT = 6;
+   private static final int BIT_MAP_COL_COUNT = 20;
 
    // Row index of Image are being used.
    private int rowUsing;
@@ -22,9 +22,9 @@ public class MapView extends AbstractGameObject {
    private GameSurface gameSurface;
 
    MapView(final GameSurface gameSurface, final Bitmap image) {
-      super(image, rowCount, colCount);
-      final int tileRowCount = tileRowCountConst;
-      final int tileColCount = tileColCountConst;
+      super(image, ROW_COUNT, COL_COUNT);
+      final int tileRowCount = TILE_ROW_COUNT_CONST;
+      final int tileColCount = TILE_COL_COUNT_CONST;
 
       this.gameSurface = gameSurface;
 
@@ -32,16 +32,16 @@ public class MapView extends AbstractGameObject {
 
       for (int row = 0; row < tileRowCount; row++) {
          for (int col = 0; col < tileColCount; col++) {
-            this.tiles[row][col] = this.createSubImageAt(row + bitMapRowCount, col + bitMapColCount);
+            this.tiles[row][col] = this.createSubImageAt(row + BIT_MAP_ROW_COUNT, col + BIT_MAP_COL_COUNT);
          }
       }
    }
 
 
    public MapView(final GameSurface gameSurface) {
-      super(rowCount, colCount);
-      final int tileRowCount = tileRowCountConst;
-      final int tileColCount = tileColCountConst;
+      super(ROW_COUNT, COL_COUNT);
+      final int tileRowCount = TILE_ROW_COUNT_CONST;
+      final int tileColCount = TILE_COL_COUNT_CONST;
 
       this.gameSurface = gameSurface;
 

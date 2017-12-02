@@ -3,18 +3,18 @@ package cpe307.team6.toweroffense.game;
 import android.graphics.Bitmap;
 
 public abstract class AbstractGameObject {
-   private Bitmap image;
-   private int imageWidth = 0;
-   private int imageHeight = 0;
-
-   final int colCount;
-   final int rowCount;
-
    int objectWidth = 0;
    int objectHeight = 0;
 
    int x;
    int y;
+
+   final int colCount;
+   final int rowCount;
+
+   private Bitmap image;
+   private int imageWidth = 0;
+   private int imageHeight = 0;
 
    // Draw object at specific x, y
    public AbstractGameObject(final Bitmap image, final int rowCount, final int colCount, final int xPos, final int yPos) {
