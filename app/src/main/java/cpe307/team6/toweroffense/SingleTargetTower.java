@@ -11,10 +11,10 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
-   private final static int ATTACK_DISTANCE = 0;
-   private final static int DAMAGE = 0;
+   private final static int ATTACK_DISTANCE = 5;
+   private final static int DAMAGE = 50;
 
-   private final List<Location> path = null;
+   private final List<Location> path;
    @Getter private final Location location;
 
    private Priority priority;
