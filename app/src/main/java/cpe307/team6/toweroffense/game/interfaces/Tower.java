@@ -10,6 +10,6 @@ public interface Tower {
    }
 
    void setPriority(Priority priority);
-   void attack(List<Unit> units);
+   List<Unit> selectTargets(List<Unit> units);
    Location getLocation();
 }
