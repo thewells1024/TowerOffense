@@ -69,7 +69,7 @@ public class UnitOne implements Unit {
 
    /**
     * Function for towers to apply damage to the unit.  Returns a boolean
-    * to specify removal through the map.
+    * to signal for removal from the map.
     * 
     * @param amount The amount of damage to be dealt to the unit
     * @return Whether the unit has been killed (true) or not (false)
