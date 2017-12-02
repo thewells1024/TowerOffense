@@ -2,87 +2,70 @@ package cpe307.team6.toweroffense.game;
 
 import cpe307.team6.toweroffense.game.interfaces.Unit;
 
-//import java.util.List;
+import java.util.List;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+
+@Data
+@Setter(AccessLevel.NONE)
 public class UnitOne implements Unit {
-   // Location is used as a bounds check for the tile (x, y)
-   // It specifies the location of the unit's  top-left corner for comparison to tiles
+   private static final int ATTACK = 5;
+   private static final double SPEED = .1;
+
+   private final List<Location> path;
+
    private Location currentLocation;
-   private double attack;
-   private double health;
-   
-   // public Location move(List<Location> path)
-   // pathing implementation pending
-
-   // Constructor for the unit
-   public UnitOne(final Location newLocation, final double newHealth, final double newAttack) {
-      setLocation(newLocation);
-      setHealth(newHealth);
-      setAttack(newAttack);
-   }
+   private int health;
 
    /**
-    * Simple version of the location setter.  Does not include unit pathing.
-    * 
-    * @param newLocation The new location for the unit
+    * Function for movement along a path.
+    *
+    * @return The current location of the unit on its path
     */
-   public void setLocation(final Location newLocation) {
-      this.currentLocation = newLocation;
+   public Location move() {
+      double remainingMovement = SPEED;
+
+      while (remainingMovement > 0) {
+         final int nextIndex = path.indexOf(this.currentLocation.getPathLocation()) + 1;
+
+         if (nextIndex >= path.size()) {
+            break;
+         }
+
+         final Location nextLocation = path.get(nextIndex);
+         double newX = currentLocation.getX();
+         double newY = currentLocation.getY();
+         double changeX = nextLocation.getX() - newX;
+         double changeY = nextLocation.getY() - newY;
+
+         if (Math.abs(changeX) > remainingMovement) {
+            changeX *= (remainingMovement / Math.abs(changeX));
+         }
+
+         if (Math.abs(changeY) > remainingMovement) {
+            changeY *= (remainingMovement / Math.abs(changeY));
+         }
+
+         newX += changeX;
+         newY += changeY;
+
+         currentLocation = new Location(newX, newY);
+         remainingMovement -= (changeX + changeY);
+      }
+
+      return currentLocation;
    }
 
-   /**
-    * Simple getter for the currentLocation variable.
-    * 
-    * @return The current (x, y) location of the unit
-    */
    public Location getLocation() {
       return this.currentLocation;
    }
-   
-   /**
-    * Simple setter for the attack variable.
-    * 
-    * @param newAttack The new attack value for the unit
-    */
-   public void setAttack(final double newAttack) {
-      if (newAttack < 0) {
-         this.attack = 0;
-      } else {
-         this.attack = newAttack;
-      }
+
+   public int getAttack() {
+      return ATTACK;
    }
-   
-   /**
-    * Simple getter for the attack variable.
-    * 
-    * @return The unit's attack value
-    */
-   public double getAttack() {
-      return this.attack;
-   }
-   
-   /**
-    * Simple setter for the health variable.
-    * 
-    * @param newHealth The new health value for the unit
-    */
-   public void setHealth(final double newHealth) {
-      if (newHealth < 0) {
-         this.health = 0;
-      } else {
-         this.health = newHealth;
-      }
-   }
-   
-   /**
-    * Simple getter for the health variable.
-    * 
-    * @return The current health value of the unit
-    */
-   public double getHealth() {
-      return this.health;
-   }
-   
+
    /**
     * Function for towers to apply damage to the unit.  Returns a boolean
     * to specify removal through the map.
@@ -90,7 +73,7 @@ public class UnitOne implements Unit {
     * @param amount The amount of damage to be dealt to the unit
     * @return Whether the unit has been killed (true) or not (false)
     */
-   public boolean takeDamage(final double amount) {
+   public boolean takeDamage(final int amount) {
       this.health -= amount;
       if (health < 0) {
          this.health = 0;
