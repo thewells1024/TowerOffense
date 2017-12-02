@@ -14,7 +14,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    private static final int yPos = 50;
 
    private GameThread gameThread;
-   private Map map;
+   private MapView mapView;
    private ChibiCharacter chibi;
 
    public GameSurface(final Context context) {
@@ -34,7 +34,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    @Override
    public void draw(final Canvas canvas) {
       super.draw(canvas);
-      this.map.draw(canvas);
+      this.mapView.draw(canvas);
       this.chibi.draw(canvas);
    }
 
@@ -43,7 +43,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    public void surfaceCreated(final SurfaceHolder holder) {
       final Bitmap mapBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.tiles);
       final Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi);
-      this.map = new Map(this, mapBitmap);
+      this.mapView = new MapView(this, mapBitmap);
       this.chibi = new ChibiCharacter(this, chibiBitmap1, xPos, yPos);
       this.gameThread = new GameThread(this, holder);
       this.gameThread.setRunning(true);

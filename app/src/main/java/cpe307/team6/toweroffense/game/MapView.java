@@ -3,7 +3,7 @@ package cpe307.team6.toweroffense.game;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Map extends AbstractGameObject {
+public class MapView extends AbstractGameObject {
    private static final int rowCount = 30;
    private static final int colCount = 30;
    private static final int tileRowCountConst = 9;
@@ -21,7 +21,7 @@ public class Map extends AbstractGameObject {
 
    private GameSurface gameSurface;
 
-   Map(final GameSurface gameSurface, final Bitmap image) {
+   MapView(final GameSurface gameSurface, final Bitmap image) {
       super(image, rowCount, colCount);
       final int tileRowCount = tileRowCountConst;
       final int tileColCount = tileColCountConst;
@@ -38,7 +38,7 @@ public class Map extends AbstractGameObject {
    }
 
 
-   public Map(final GameSurface gameSurface) {
+   public MapView(final GameSurface gameSurface) {
       super(rowCount, colCount);
       final int tileRowCount = tileRowCountConst;
       final int tileColCount = tileColCountConst;
