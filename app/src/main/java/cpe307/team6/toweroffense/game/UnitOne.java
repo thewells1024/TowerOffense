@@ -19,12 +19,6 @@ public class UnitOne implements Unit {
    private Location currentLocation;
    private int health;
 
-   /**
-    * Function for movement along a path. Moves the unit a set distance according
-    * to its speed.
-    *
-    * @return The current location of the unit on its path
-    */
    public Location move() {
       double remainingMovement = SPEED;
 
@@ -67,13 +61,6 @@ public class UnitOne implements Unit {
       return ATTACK;
    }
 
-   /**
-    * Function for towers to apply damage to the unit.  Returns a boolean
-    * to signal for removal from the map.
-    * 
-    * @param amount The amount of damage to be dealt to the unit
-    * @return Whether the unit has been killed (true) or not (false)
-    */
    public boolean takeDamage(final int amount) {
       this.health -= amount;
       if (health < 0) {
