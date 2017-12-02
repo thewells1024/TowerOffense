@@ -4,18 +4,20 @@ import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
 
-import game.Location;
+import cpe307.team6.toweroffense.game.Location
 
 import lombok.Getter;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class SingleTargetTower implements Tower {
+   private final static int ATTACK_DISTANCE = 0;
+   private final static int DAMAGE = 0;
+
+   private final List<Location> path = null;
    @Getter private final Location location;
-   private final static int attackDistance;
-   private final static int damage;
-   private final static Priority priority;
-   private final static List<Location> path;
+
+   private Priority priority;
 
    public List<Unit> selectTargetByPriority(final List<Unit> units){
       switch(this.priority){
@@ -37,7 +39,7 @@ public class SingleTargetTower implements Tower {
       for(Unit unit: units) {
          double distance = distanceToBase(unit.getLocation());
          double towerDistance = unit.getLocation().getDistance(this.location);
-         if(towerDistance <= attackDistance 
+         if(towerDistance <= ATTACK_DISTANCE
             && distance > maxDistance){
 
             returnedUnit = unit;
@@ -54,7 +56,7 @@ public class SingleTargetTower implements Tower {
       for(Unit unit: units) {
          double distance = distanceToBase(unit.getLocation());
          double towerDistance = unit.getLocation().getDistance(this.location);
-         if(towerDistance <= attackDistance 
+         if(towerDistance <= ATTACK_DISTANCE
             && distance < minDistance){
 
             returnedUnit = unit;
@@ -70,7 +72,7 @@ public class SingleTargetTower implements Tower {
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
-         if(distance <= attackDistance && distance < minDistance) {
+         if(distance <= ATTACK_DISTANCE && distance < minDistance) {
             returnedUnit = unit;
             minDistance = distance;
          }
@@ -85,7 +87,7 @@ public class SingleTargetTower implements Tower {
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
          int curHealth = unit.getHealth();
-         if(distance <= attackDistance && curHealth > maxHealth) {
+         if(distance <= ATTACK_DISTANCE && curHealth > maxHealth) {
             returnedUnit = unit;
             maxHealth = health;
          }
