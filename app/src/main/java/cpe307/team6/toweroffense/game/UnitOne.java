@@ -38,7 +38,7 @@ public class UnitOne {
     * @param newAttack The new attack value for the unit
     */
    public void setAttack(int newAttack) {
-	  this.Attack = newAttack;   
+	  this.attack = newAttack;   
    }
    
    /**
