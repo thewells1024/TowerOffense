@@ -30,8 +30,9 @@ public class SingleTargetTower implements Tower {
       }
    }
 
+
    public List<Unit> selectLastTarget(final List<Unit> units){
-      Unit returnedUnit;
+      Unit returnedUnit = null;
       double maxDistance = Integer.MIN_VALUE;
       for(Unit unit: units) {
          double distance = distanceToBase(unit.getLocation());
@@ -48,7 +49,7 @@ public class SingleTargetTower implements Tower {
    }
 
    public List<Unit> selectFirstTarget(final List<Unit> units){
-      Unit returnedUnit;
+      Unit returnedUnit = null;
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit: units) {
          double distance = distanceToBase(unit.getLocation());
@@ -65,7 +66,7 @@ public class SingleTargetTower implements Tower {
    }
 
    public List<Unit> selectClosestTarget(final List<Unit> units){
-      Unit returnedUnit;
+      Unit returnedUnit = null;
       double minDistance = Integer.MAX_VALUE;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
@@ -79,7 +80,7 @@ public class SingleTargetTower implements Tower {
    }
 
    public List<Unit> selectHealthiestTarget(final List<Unit> units){
-      Unit returnedUnit;
+      Unit returnedUnit = null;
       int maxHealth = 0;
       for(Unit unit : units){
          double distance = unit.getLocation().getDistance(this.location);
