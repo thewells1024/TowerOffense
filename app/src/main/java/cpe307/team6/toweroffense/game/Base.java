@@ -17,7 +17,7 @@ public class Base {
    private final List<Location> path;
 
    public int takeDamage(final int amount) {
-      health -= amount;
+      health -= amount <= health ? amount : health;
       return health;
    }
 

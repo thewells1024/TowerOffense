@@ -1,5 +1,7 @@
 package cpe307.team6.toweroffense.game.interfaces;
 
+import cpe307.team6.toweroffense.game.Location;
+
 import java.util.List;
 
 public interface Tower {
@@ -9,4 +11,5 @@ public interface Tower {
 
    void setPriority(Priority priority);
    void attack(List<Unit> units);
+   Location getLocation();
 }
