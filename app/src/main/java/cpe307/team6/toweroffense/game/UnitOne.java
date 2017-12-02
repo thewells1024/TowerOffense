@@ -13,14 +13,21 @@ public class UnitOne implements Unit {
    
    // public Location move(List<Location> path)
    // pathing implementation pending
-   
+
+   // Constructor for the unit
+   public UnitOne(final Location newLocation, final double newHealth, final double newAttack) {
+      setLocation(newLocation);
+      setHealth(newHealth);
+      setAttack(newAttack);
+   }
+
    /**
     * Simple version of the location setter.  Does not include unit pathing.
     * 
     * @param newLocation The new location for the unit
     */
-   public void setLocation(Location newLocation) {
-	   this.currentLocation = newLocation;
+   public void setLocation(final Location newLocation) {
+      this.currentLocation = newLocation;
    }
 
    /**
@@ -29,7 +36,7 @@ public class UnitOne implements Unit {
     * @return The current (x, y) location of the unit
     */
    public Location getLocation() {
-	  return this.currentLocation;
+      return this.currentLocation;
    }
    
    /**
@@ -37,8 +44,12 @@ public class UnitOne implements Unit {
     * 
     * @param newAttack The new attack value for the unit
     */
-   public void setAttack(double newAttack) {
-	  this.attack = newAttack;   
+   public void setAttack(final double newAttack) {
+      if (newAttack < 0) {
+         this.attack = 0;
+      } else {
+         this.attack = newAttack;
+      }
    }
    
    /**
@@ -47,7 +58,7 @@ public class UnitOne implements Unit {
     * @return The unit's attack value
     */
    public double getAttack() {
-	  return this.attack;   
+      return this.attack;
    }
    
    /**
@@ -55,7 +66,7 @@ public class UnitOne implements Unit {
     * 
     * @param newHealth The new health value for the unit
     */
-   public void setHealth(double newHealth) {
+   public void setHealth(final double newHealth) {
       if (newHealth < 0) {
          this.health = 0;
       } else {
@@ -79,12 +90,12 @@ public class UnitOne implements Unit {
     * @param amount The amount of damage to be dealt to the unit
     * @return Whether the unit has been killed (true) or not (false)
     */
-   public boolean takeDamage(double amount) {
-	  this.health -= amount;
-	  if (health < 0) {
-	     this.health = 0;
-	  }
-	  // Removal function to be added for 0 health
-	  return (this.health == 0);
+   public boolean takeDamage(final double amount) {
+      this.health -= amount;
+      if (health < 0) {
+         this.health = 0;
+      }
+      // Removal function to be added for 0 health
+      return (this.health == 0);
    }
 }
