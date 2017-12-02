@@ -20,7 +20,8 @@ public class UnitOne implements Unit {
    private int health;
 
    /**
-    * Function for movement along a path.
+    * Function for movement along a path. Moves the unit a set distance according
+    * to its speed.
     *
     * @return The current location of the unit on its path
     */
