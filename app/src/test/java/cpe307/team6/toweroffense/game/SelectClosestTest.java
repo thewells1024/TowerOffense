@@ -42,6 +42,7 @@ public class SelectClosestTest {
         units.add(unit2);
         SingleTargetTower tower = new SingleTargetTower(path, location, priority);
         List<Unit> selectedUnits = tower.selectTargets(units);
+        System.out.println(selectedUnits.get(0).getLocation());
         assertTrue(selectedUnits.size() == 1 && selectedUnits.get(0).getLocation().equals(new Location(0, 1.3)));
     }
 
