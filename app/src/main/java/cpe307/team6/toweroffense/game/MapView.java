@@ -10,6 +10,7 @@ public class MapView extends AbstractGameObject {
    private static final int TILE_COL_COUNT_CONST = 8;
    private static final int BIT_MAP_ROW_COUNT = 6;
    private static final int BIT_MAP_COL_COUNT = 20;
+   private static final int ROW_TILE_POS = 3;
 
    // Row index of Image are being used.
    private int rowUsing;
@@ -60,10 +61,10 @@ public class MapView extends AbstractGameObject {
          }
       }
 
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < ROW_TILE_POS; i++) {
          for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
             canvas.drawBitmap(
-                  tiles[3][2],
+                  tiles[ROW_TILE_POS][2],
                   (i - 2) * this.objectWidth + (canvas.getWidth() / 2) + this.objectWidth / 2,
                   j * this.objectHeight,
                   null

@@ -1,5 +1,9 @@
 package cpe307.team6.toweroffense.game;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,10 +11,6 @@ import android.graphics.Canvas;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import cpe307.team6.toweroffense.R;
 
@@ -37,17 +37,17 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    }
 
    public void update() {
-      for(AngelCharacter angel: angelList) {
+      for (AngelCharacter angel : angelList) {
          angel.update();
       }
-      for(Explosion explosion: this.explosionList)  {
+      for (Explosion explosion : this.explosionList) {
          explosion.update();
       }
-      Iterator<Explosion> iterator= this.explosionList.iterator();
-      while(iterator.hasNext())  {
-         Explosion explosion = iterator.next();
+      Iterator<Explosion> iterator = this.explosionList.iterator();
+      while (iterator.hasNext()) {
+         final Explosion explosion = iterator.next();
 
-         if(explosion.isFinish()) {
+         if (explosion.isFinish()) {
             // If explosion finish, Remove the current element from the iterator & list.
             iterator.remove();
             continue;
@@ -58,24 +58,23 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    }
 
    @Override
-   public boolean onTouchEvent(MotionEvent event) {
+   public boolean onTouchEvent(final MotionEvent event) {
       if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-         int x = (int) event.getX();
-         int y = (int) event.getY();
+         final int x = (int) event.getX();
+         final int y = (int) event.getY();
 
-         Iterator<AngelCharacter> iterator = this.angelList.iterator();
+         final Iterator<AngelCharacter> iterator = this.angelList.iterator();
 
          while (iterator.hasNext()) {
-            AngelCharacter angel = iterator.next();
-            if (angel.getX() < x && x < angel.getX() + angel.getWidth()
-                  && angel.getY() < y && y < angel.getY() + angel.getHeight()) {
+            final AngelCharacter angel = iterator.next();
+            if (angel.getX() < x && x < angel.getX() + angel.getWidth() && angel.getY() < y && y < angel.getY() + angel.getHeight()) {
                // Remove the current element from the iterator and the list.
                iterator.remove();
 
                // Create Explosion object.
-               Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.explosion);
-               Explosion explosion = new Explosion(this, bitmap, angel.getX(), angel.getY());
+               final Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.explosion);
+               final Explosion explosion = new Explosion(this, bitmap, angel.getX(), angel.getY());
 
                this.explosionList.add(explosion);
             }
@@ -83,8 +82,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
 
          for (AngelCharacter angel : angelList) {
-            int movingVectorX = x - angel.getX();
-            int movingVectorY = y - angel.getY();
+            final int movingVectorX = x - angel.getX();
+            final int movingVectorY = y - angel.getY();
             angel.setMovingVector(movingVectorX, movingVectorY);
          }
          return true;
@@ -98,11 +97,11 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
       this.mapView.draw(canvas);
 
-      for(AngelCharacter angel: angelList)  {
+      for (AngelCharacter angel : angelList) {
          angel.draw(canvas);
       }
 
-      for(Explosion explosion: this.explosionList)  {
+      for (Explosion explosion : this.explosionList) {
          explosion.draw(canvas);
       }
 
