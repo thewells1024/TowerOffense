@@ -7,7 +7,7 @@ import org.junit.Test;
 public class BasicUnitTest {
    @Test
    public void testGetDistance() {
-      BasicUnit testUnit = new BasicUnit();
+      BasicUnit testUnit = new BasicUnit(null, null, 1000);
       testUnit.takeDamage(5);
 
       assertEquals(995, testUnit.getHealth());

@@ -5,22 +5,21 @@ import cpe307.team6.toweroffense.game.interfaces.Unit;
 import java.util.List;
 
 import lombok.AccessLevel;
-import lombok.AllArgsContructor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Setter;
 
-@AllArgsContructor
+@AllArgsConstructor
 @Data
 @Setter(AccessLevel.NONE)
 public class BasicUnit implements Unit {
-   private static final int BASE_HEALTH = 1000;
    private static final int ATTACK = 5;
    private static final double SPEED = .1;
 
    private final List<Location> path;
 
    private Location location;
-   private int health = BASE_HEALTH;
+   private int health;
 
    public Location move() {
       double remainingMovement = SPEED;
