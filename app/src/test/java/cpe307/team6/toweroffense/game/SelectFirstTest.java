@@ -42,7 +42,7 @@ public class SelectFirstTest {
         units.add(unit2);
         SingleTargetTower tower = new SingleTargetTower(path, location, priority);
         List<Unit> selectedUnits = tower.selectTargets(units);
-        assertTrue(selectedUnits.size() == 1 && selectedUnits.get(0).getLocation().equals(new Location(0, 0)));
+        assertTrue(selectedUnits.size() == 1 && selectedUnits.get(0).getLocation().equals(new Location(0, 1.3)));
     }
 
 }
