@@ -30,7 +30,7 @@ public class SelectLastTest {
 
     @Test
     public void testSelectLast(){
-        priority = Tower.Priority.HEALTH;
+        priority = Tower.Priority.LAST;
         ArrayList<Unit> units = new ArrayList<>();
         Unit unit1 = mock(Unit.class);
         when(unit1.getLocation()).thenReturn(new Location(0,0));
