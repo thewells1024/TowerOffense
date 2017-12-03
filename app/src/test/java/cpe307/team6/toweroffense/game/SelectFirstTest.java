@@ -13,6 +13,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/* Chris Varanese */
+
 public class SelectFirstTest {
     private List<Location> path;
     private Location location;

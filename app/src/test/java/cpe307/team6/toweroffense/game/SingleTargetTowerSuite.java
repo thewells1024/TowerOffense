@@ -5,9 +5,8 @@ import org.junit.runners.Suite.SuiteClasses;
 import org.junit.Test;
 
 
-/**
- * Created by cvaranese on 12/3/17.
- */
+/* Chris Varanese */
+
 @RunWith(Suite.class)
 @SuiteClasses({ SelectClosestTest.class, SelectHealthiestTest.class, SelectFirstTest.class,
         SelectLastTest.class})
