@@ -13,4 +13,8 @@ public class Location {
    public double getDistance(final Location from) {
       return sqrt(pow(from.getX() - x, 2) + pow(from.getY() - y, 2));
    }
+
+   public Location getPathLocation() {
+      return new Location((int) this.getX(), (int) this.getY());
+   }
 }
