@@ -1,15 +1,28 @@
 package cpe307.team6.toweroffense.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+// Ian Watts
 public class BasicUnitShortPathTest {
    @Test
    public void testGetDistance() {
-      BasicUnit testUnit = new BasicUnit(null, null, 1000);
-      testUnit.takeDamage(5);
+      Location ending = null;
+      List path = new ArrayList();
+      path.add(new Location(1, 1));
+      path.add(new Location(1, 2));
+      path.add(new Location(1, 3));
 
-      assertEquals(995, testUnit.getHealth());
+      BasicUnit testUnit = new BasicUnit(path, new Location(1, 1), new Location(1, 1), 1000);
+
+      for (int i = 0; i < 30; i++) {
+         ending = testUnit.move();
+      }
+
+      assertEquals(3, ending.getY(), .01);
    }
 }
