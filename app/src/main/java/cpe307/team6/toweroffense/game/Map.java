@@ -23,9 +23,9 @@ public class Map {
    
    public static List<List<Tile>> createMap(final int width, final int height, final List<Location> path) {
       final List<List<Tile>> returnMap = new ArrayList<>();
-      for (int i = 0; i < height; i++) {
+      for (int i = 0; i < width; i++) {
          final ArrayList<Tile> row = new ArrayList<>();
-         for (int j = 0; j < width; j++) {
+         for (int j = 0; j < height; j++) {
             row.add(new Tile(i, j, !path.contains(new Location(i, j))));
          }
          returnMap.add(row);
