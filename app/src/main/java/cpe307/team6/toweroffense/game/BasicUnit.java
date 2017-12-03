@@ -16,22 +16,22 @@ public class BasicUnit implements Unit {
 
    private final List<Location> path;
 
-   private Location currentLocation;
-   private int health;
+   private Location location;
+   private int health = 1000;
 
    public Location move() {
       double remainingMovement = SPEED;
 
       while (remainingMovement > 0) {
-         final int nextIndex = path.indexOf(this.currentLocation.getPathLocation()) + 1;
+         final int nextIndex = path.indexOf(this.location.getPathLocation()) + 1;
 
          if (nextIndex >= path.size()) {
             break;
          }
 
          final Location nextLocation = path.get(nextIndex);
-         double newX = currentLocation.getX();
-         double newY = currentLocation.getY();
+         double newX = location.getX();
+         double newY = location.getY();
          double changeX = nextLocation.getX() - newX;
          double changeY = nextLocation.getY() - newY;
 
@@ -46,15 +46,15 @@ public class BasicUnit implements Unit {
          newX += changeX;
          newY += changeY;
 
-         currentLocation = new Location(newX, newY);
+         location = new Location(newX, newY);
          remainingMovement -= (changeX + changeY);
       }
 
-      return currentLocation;
+      return location;
    }
 
    public Location getLocation() {
-      return this.currentLocation;
+      return this.location;
    }
 
    public int getAttack() {
