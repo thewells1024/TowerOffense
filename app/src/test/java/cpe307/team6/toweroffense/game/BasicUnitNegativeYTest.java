@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class BasicUnitHealthTest {
+public class BasicUnitNegativeYTest {
    @Test
    public void testGetDistance() {
       BasicUnit testUnit = new BasicUnit(null, null, 1000);
