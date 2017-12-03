@@ -1,15 +1,26 @@
 package cpe307.team6.toweroffense.game;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 public class BasicUnitPositiveXTest {
    @Test
-   public void testGetDistance() {
-      BasicUnit testUnit = new BasicUnit(null, null, 1000);
-      testUnit.takeDamage(5);
+   public void testPositiveX() {
+      Location ending = null;
+      List path = new ArrayList();
+      path.add(new Location(1, 1));
+      path.add(new Location(2, 1));
+      path.add(new Location(3, 1));
 
-      assertEquals(995, testUnit.getHealth());
+      BasicUnit testUnit = new BasicUnit(path, new Location(1, 1), 1000);
+
+      for (int i = 0; i < 20; i++) {
+         ending = testUnit.move();
+      }
+
+      assertEquals(3, ending.getX());
    }
 }
