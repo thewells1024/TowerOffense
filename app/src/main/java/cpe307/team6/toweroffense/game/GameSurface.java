@@ -40,10 +40,13 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
       for (AngelCharacter angel : angelList) {
          angel.update();
       }
+
       for (Explosion explosion : this.explosionList) {
          explosion.update();
       }
-      Iterator<Explosion> iterator = this.explosionList.iterator();
+
+      final Iterator<Explosion> iterator = this.explosionList.iterator();
+
       while (iterator.hasNext()) {
          final Explosion explosion = iterator.next();
 
