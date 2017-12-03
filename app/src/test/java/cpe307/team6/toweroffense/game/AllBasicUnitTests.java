@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ BasicUnitHealthTest.class, BasicUnitNegativeXTest.class, BasicUnitNegativeYTest.class,
-   BasicUnitPositiveXTest.class, BasicUnitPositiveYTest.class, BasicUnitShortTurnTest.class, BasicUnitTurnTest.class})
+   BasicUnitPositiveXTest.class, BasicUnitPositiveYTest.class, BasicUnitShortPathTest.class, BasicUnitTurnTest.class})
 public class AllBasicUnitTests {
 
 }
