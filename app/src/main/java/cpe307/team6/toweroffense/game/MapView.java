@@ -21,7 +21,7 @@ public class MapView extends AbstractGameObject {
 
    private GameSurface gameSurface;
 
-   MapView(final GameSurface gameSurface, final Bitmap image) {
+   MapView(final GameSurface gameSurface, final Bitmap image, final Bitmap tower) {
       super(image, ROW_COUNT, COL_COUNT);
       final int tileRowCount = TILE_ROW_COUNT_CONST;
       final int tileColCount = TILE_COL_COUNT_CONST;
@@ -54,9 +54,20 @@ public class MapView extends AbstractGameObject {
    void draw(final Canvas canvas) {
       // Bitmap bitmap = this.getCurrentMoveBitmap();
 
-      for (int i = 0; i < canvas.getWidth() / this.objectWidth; i++) {
-         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
+      for (int i = 0; i < canvas.getWidth() / this.objectWidth; i += 1) {
+         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j += 1) {
             canvas.drawBitmap(tiles[0][0], i * this.objectWidth, j * this.objectHeight, null);
+         }
+      }
+
+      for (int i = 0; i < 3; i++) {
+         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
+            canvas.drawBitmap(
+                  tiles[3][2],
+                  (i - 2) * this.objectWidth + (canvas.getWidth() / 2) + this.objectWidth / 2,
+                  j * this.objectHeight,
+                  null
+            );
          }
       }
 

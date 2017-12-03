@@ -33,7 +33,8 @@ public class ChibiCharacter extends AbstractGameObject {
    private GameSurface gameSurface;
 
    public ChibiCharacter(final GameSurface gameSurface, final Bitmap image, final int xPos, final int yPos) {
-      super(image, CHARACTER_ROW_COUNT, CHARACTER_COL_COUNT, xPos, yPos);
+      // super(image, CHARACTER_ROW_COUNT, CHARACTER_COL_COUNT, xPos, yPos);
+      super(image, CHARACTER_ROW_COUNT, CHARACTER_COL_COUNT, gameSurface.getWidth() / 2, gameSurface.getHeight());
 
       this.gameSurface = gameSurface;
 
@@ -98,7 +99,7 @@ public class ChibiCharacter extends AbstractGameObject {
       final double movingVectorLength = Math.sqrt(movingVectorX * movingVectorX + movingVectorY * movingVectorY);
 
       // Calculate the new position of the game character.
-      this.x = x + (int) (distance * movingVectorX / movingVectorLength);
+      // this.x = x + (int) (distance * movingVectorX / movingVectorLength);
       this.y = y + (int) (distance * movingVectorY / movingVectorLength);
 
       // When the game's character touches the edge of the screen, then change direction
@@ -120,23 +121,24 @@ public class ChibiCharacter extends AbstractGameObject {
       }
 
       // rowUsing
-      if (movingVectorX > 0) {
-         if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-            this.rowUsing = ROW_TOP_TO_BOTTOM;
-         } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-            this.rowUsing = ROW_BOTTOM_TO_TOP;
-         } else {
-            this.rowUsing = ROW_LEFT_TO_RIGHT;
-         }
-      } else {
-         if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-            this.rowUsing = ROW_TOP_TO_BOTTOM;
-         } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
-            this.rowUsing = ROW_BOTTOM_TO_TOP;
-         } else {
-            this.rowUsing = ROW_RIGHT_TO_LEFT;
-         }
-      }
+//      if (movingVectorX > 0) {
+//         if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
+//            this.rowUsing = ROW_TOP_TO_BOTTOM;
+//         } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
+//            this.rowUsing = ROW_BOTTOM_TO_TOP;
+//         } else {
+//            this.rowUsing = ROW_LEFT_TO_RIGHT;
+//         }
+//      } else {
+//         if (movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
+//            this.rowUsing = ROW_TOP_TO_BOTTOM;
+//         } else if (movingVectorY < 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
+//            this.rowUsing = ROW_BOTTOM_TO_TOP;
+//         } else {
+//            this.rowUsing = ROW_RIGHT_TO_LEFT;
+//         }
+//      }
+      this.rowUsing = ROW_BOTTOM_TO_TOP;
    }
 
    public void draw(final Canvas canvas) {
