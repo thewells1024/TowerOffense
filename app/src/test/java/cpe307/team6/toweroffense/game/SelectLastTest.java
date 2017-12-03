@@ -13,7 +13,9 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class SingleTargetTowerTest {
+/* Chris Varanese */
+
+public class SelectLastTest {
     private List<Location> path;
     private Location location;
     private Tower.Priority priority;
@@ -21,16 +23,16 @@ public class SingleTargetTowerTest {
     @Before
     public void setup() {
         path = asList(new Location(0,0),
-           new Location(0,1),
-           new Location(0,2),
-           new Location(1,2),
-           new Location(1,3));
+                new Location(0,1),
+                new Location(0,2),
+                new Location(1,2),
+                new Location(1,3));
         location = new Location(1,1);
     }
 
     @Test
-    public void testSelectHealthiest(){
-        priority = Tower.Priority.HEALTH;
+    public void testSelectLast(){
+        priority = Tower.Priority.LAST;
         ArrayList<Unit> units = new ArrayList<>();
         Unit unit1 = mock(Unit.class);
         when(unit1.getLocation()).thenReturn(new Location(0,0));
@@ -42,7 +44,7 @@ public class SingleTargetTowerTest {
         units.add(unit2);
         SingleTargetTower tower = new SingleTargetTower(path, location, priority);
         List<Unit> selectedUnits = tower.selectTargets(units);
-        assertTrue(selectedUnits.size() == 1 && selectedUnits.get(0).getHealth() == 100);
+        assertTrue(selectedUnits.size() == 1 && selectedUnits.get(0).getLocation().equals(new Location(0, 0)));
     }
 
 }
