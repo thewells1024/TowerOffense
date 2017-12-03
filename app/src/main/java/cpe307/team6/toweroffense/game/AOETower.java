@@ -1,10 +1,10 @@
 package cpe307.team6.toweroffense.game;
 
-import cpe307.team6.toweroffense.game.interfaces.Unit;
 import cpe307.team6.toweroffense.game.interfaces.Tower;
+import cpe307.team6.toweroffense.game.interfaces.Unit;
 
-import java.util.Collections;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AOETower implements Tower {
@@ -80,21 +80,16 @@ public class AOETower implements Tower {
 
       if (numUnits == 0) {
          //"No units to set as target. List of units is empty
-      }
-      else if (numUnits == 1) {
+      } else if (numUnits == 1) {
          target = units.get(0);
-      }
-      else if (this.priority == Tower.Priority.DISTANCE) {
+      } else if (this.priority == Tower.Priority.DISTANCE) {
          target = getNearestUnit(units, numUnits);
-      }
-      else if (this.priority == Tower.Priority.HEALTH) {
+      } else if (this.priority == Tower.Priority.HEALTH) {
          //Find unit that has the lowest health
          target = getWeakestUnit(units, numUnits);
-      }
-      else if (this.priority == Tower.Priority.FIRST) {
+      } else if (this.priority == Tower.Priority.FIRST) {
          target = units.get(0);
-      }
-      else if (this.priority == Tower.Priority.LAST) {
+      } else if (this.priority == Tower.Priority.LAST) {
          target = units.get(numUnits - 1);
       }
 
