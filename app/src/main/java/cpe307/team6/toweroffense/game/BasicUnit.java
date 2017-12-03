@@ -5,9 +5,11 @@ import cpe307.team6.toweroffense.game.interfaces.Unit;
 import java.util.List;
 
 import lombok.AccessLevel;
+import lombok.AllArgsContructor;
 import lombok.Data;
 import lombok.Setter;
 
+@AllArgsContructor
 @Data
 @Setter(AccessLevel.NONE)
 public class BasicUnit implements Unit {
