@@ -11,13 +11,14 @@ import lombok.Setter;
 @Data
 @Setter(AccessLevel.NONE)
 public class BasicUnit implements Unit {
+   private static final int BASE_HEALTH = 1000;
    private static final int ATTACK = 5;
    private static final double SPEED = .1;
 
    private final List<Location> path;
 
    private Location location;
-   private int health = 1000;
+   private int health = BASE_HEALTH;
 
    public Location move() {
       double remainingMovement = SPEED;
