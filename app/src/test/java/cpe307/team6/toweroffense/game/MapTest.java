@@ -1,4 +1,5 @@
 /* Adam is responsible for these tests*/
+package cpe307.team6.toweroffense.game;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
