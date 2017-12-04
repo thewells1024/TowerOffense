@@ -17,7 +17,7 @@ public class BasicUnitPositiveYTest {
       path.add(new Location(1, 2));
       path.add(new Location(1, 3));
 
-      BasicUnit testUnit = new BasicUnit(path, new Location(1, 1), new Location(1, 1), 1000);
+      BasicUnit testUnit = new BasicUnit(path);
 
       for (int i = 0; i < 20; i++) {
          ending = testUnit.move();

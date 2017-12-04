@@ -26,11 +26,11 @@ public class PlayerStatus {
    private List<Tower> towers;
    private Result result;
 
-   public boolean addUnits(final Unit... newUnits) {
+   public synchronized boolean addUnits(final Unit... newUnits) {
       return units.addAll(asList(newUnits));
    }
 
-   public void removeInvalidUnits() {
+   public synchronized void removeInvalidUnits() {
       final List<Location> path = base.getPath();
       final Location otherBase = path.get(path.size() - 1);
       units = units.stream().
@@ -38,17 +38,17 @@ public class PlayerStatus {
          collect(Collectors.toList());
    }
 
-   public boolean addTowers(final Tower... newTowers) {
+   public synchronized boolean addTowers(final Tower... newTowers) {
       return towers.addAll(asList(newTowers));
    }
 
-   public void removeTower(final Location atLocation) {
+   public synchronized void removeTower(final Location atLocation) {
       towers = towers.stream().
          filter(tower -> !tower.getLocation().equals(atLocation)).
          collect(Collectors.toList());
    }
 
-   public boolean playerLost() {
+   public synchronized boolean playerLost() {
       return base.getHealth() == 0;
    }
 

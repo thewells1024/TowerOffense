@@ -12,4 +12,5 @@ public interface Tower {
    void setPriority(Priority priority);
    List<Unit> selectTargets(List<Unit> units);
    Location getLocation();
+   int getDamage();
 }

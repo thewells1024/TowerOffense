@@ -9,12 +9,14 @@ import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class SingleTargetTower implements Tower {
-   private static final int ATTACK_DISTANCE = 5;
-   private static final int DAMAGE = 50;
+   private static final int ATTACK_DISTANCE = 100;
+   private static final int DAMAGE = 35;
 
    private final List<Location> path;
    @Getter
@@ -37,6 +39,11 @@ public class SingleTargetTower implements Tower {
          default:
             return new ArrayList<>();
       }
+   }
+
+   @Override
+   public int getDamage() {
+      return DAMAGE;
    }
 
 

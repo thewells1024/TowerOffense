@@ -17,7 +17,7 @@ public class BasicUnitNegativeXTest {
       path.add(new Location(2, 1));
       path.add(new Location(1, 1));
 
-      BasicUnit testUnit = new BasicUnit(path, new Location(3, 1), new Location(3, 1), 1000);
+      BasicUnit testUnit = new BasicUnit(path);
 
       for (int i = 0; i < 20; i++) {
          ending = testUnit.move();

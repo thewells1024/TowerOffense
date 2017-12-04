@@ -17,7 +17,7 @@ public class BasicUnitTurnTest {
       path.add(new Location(1, 2));
       path.add(new Location(2, 2));
 
-      BasicUnit testUnit = new BasicUnit(path, new Location(1, 1), new Location(1, 1), 1000);
+      BasicUnit testUnit = new BasicUnit(path);
 
       for (int i = 0; i < 20; i++) {
          ending = testUnit.move();
