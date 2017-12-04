@@ -68,7 +68,9 @@ public class AOETower implements Tower {
       return this.priority;
    }
 
-   public int getDamage() { return 1; }
+   public int getDamage() {
+      return 1;
+   }
 
    /* Handles Priorities: DISTANCE and HEALTH
    * * DISTANCE:
