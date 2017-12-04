@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cpe307.team6.toweroffense">
+    package="com.cpe307.group6.toweroffense">
 
     <application
         android:allowBackup="false"

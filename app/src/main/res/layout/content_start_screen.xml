@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="cpe307.team6.toweroffense.StartScreen"
+    tools:context="com.cpe307.group6.toweroffense.StartScreen"
     tools:showIn="@layout/activity_start_screen">
 
 </android.support.constraint.ConstraintLayout>
