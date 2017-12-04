@@ -6,10 +6,13 @@ import cpe307.team6.toweroffense.game.Map;
 import cpe307.team6.toweroffense.game.PlayerStatus;
 import cpe307.team6.toweroffense.game.factories.TowerFactory;
 import cpe307.team6.toweroffense.game.interfaces.Player;
+import cpe307.team6.toweroffense.game.interfaces.Tower;
 import cpe307.team6.toweroffense.game.interfaces.Unit;
 import cpe307.team6.toweroffense.game.players.EasyBot;
 import cpe307.team6.toweroffense.game.views.BasicUnitView;
 import cpe307.team6.toweroffense.game.views.GameSurface;
+import cpe307.team6.toweroffense.game.views.MapView;
+import cpe307.team6.toweroffense.game.views.TowerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ public class GameScreen extends AppCompatActivity {
    private Game game;
    private Map map;
    private Bitmap unitBitmap;
+   private Bitmap towerBitmap;
 
    @Override
    protected void onCreate(final Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class GameScreen extends AppCompatActivity {
 
       // Setup Game
       unitBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibiangel);
+      towerBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.tiles);
+
       final Player player1;
       final Player player2;
       final Bundle extras = getIntent().getExtras();
@@ -102,6 +108,12 @@ public class GameScreen extends AppCompatActivity {
                for (Unit unit : playerStatus.getUnits()) {
                   new BasicUnitView(unitBitmap, transformX(unit.getLocation().getX(), width),
                      transformY(unit.getLocation().getY(), height)).draw(canvas);
+               }
+
+               for (Tower tower : playerStatus.getTowers()) {
+                  Log.d(TAG, tower.getLocation().toString());
+                  new TowerView(towerBitmap, transformX(tower.getLocation().getX(), width),
+                     transformY(tower.getLocation().getY(), height)).draw(canvas);
                }
             }
          }
