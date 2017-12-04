@@ -24,4 +24,8 @@ public class Base {
    public List<Location> getPath() {
       return new ArrayList<>(path);
    }
+
+   public boolean isDead() {
+      return health == 0;
+   }
 }

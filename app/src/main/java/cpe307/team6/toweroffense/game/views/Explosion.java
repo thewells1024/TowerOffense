@@ -1,4 +1,4 @@
-package cpe307.team6.toweroffense.game;
+package cpe307.team6.toweroffense.game.views;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -42,7 +42,7 @@ public class Explosion extends AbstractGameObject {
    public void draw(final Canvas canvas) {
       if (!finish) {
          final Bitmap bitmap = this.createSubImageAt(rowIndex, colIndex);
-         canvas.drawBitmap(bitmap, this.x, this.y, null);
+         canvas.drawBitmap(bitmap, getX(), getY(), null);
       }
    }
 

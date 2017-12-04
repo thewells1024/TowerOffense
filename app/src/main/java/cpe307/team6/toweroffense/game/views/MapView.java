@@ -1,7 +1,9 @@
-package cpe307.team6.toweroffense.game;
+package cpe307.team6.toweroffense.game.views;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+
+import lombok.Getter;
 
 public class MapView extends AbstractGameObject {
    private static final int ROW_COUNT = 30;
@@ -12,10 +14,7 @@ public class MapView extends AbstractGameObject {
    private static final int BIT_MAP_COL_COUNT = 20;
    private static final int ROW_TILE_POS = 3;
 
-   // Row index of Image are being used.
-   private int rowUsing;
-   private int colUsing;
-
+   @Getter
    private Bitmap[][] tiles;
 
    private long lastDrawNanoTime = -1;
@@ -53,20 +52,19 @@ public class MapView extends AbstractGameObject {
    }
 
    void draw(final Canvas canvas) {
-      // Bitmap bitmap = this.getCurrentMoveBitmap();
 
-      for (int i = 0; i < canvas.getWidth() / this.objectWidth; i += 1) {
-         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j += 1) {
-            canvas.drawBitmap(tiles[0][0], i * this.objectWidth, j * this.objectHeight, null);
+      for (int i = 0; i < canvas.getWidth() / getWidth(); i += 1) {
+         for (int j = 0; j < canvas.getHeight() / getHeight(); j += 1) {
+            canvas.drawBitmap(tiles[0][0], i * getWidth(), j * this.getHeight(), null);
          }
       }
 
       for (int i = 0; i < ROW_TILE_POS; i++) {
-         for (int j = 0; j < canvas.getHeight() / this.objectHeight; j++) {
+         for (int j = 0; j < canvas.getHeight() / getHeight(); j++) {
             canvas.drawBitmap(
                   tiles[ROW_TILE_POS][2],
-                  (i - 2) * this.objectWidth + (canvas.getWidth() / 2) + this.objectWidth / 2,
-                  j * this.objectHeight,
+                  (i - 2) * getWidth() + (canvas.getWidth() / 2) + getWidth() / 2,
+                  j * getHeight(),
                   null
             );
          }
@@ -74,9 +72,5 @@ public class MapView extends AbstractGameObject {
 
       // Last draw time.
       this.lastDrawNanoTime = System.nanoTime();
-   }
-
-   public Bitmap[][] getTiles() {
-      return this.tiles;
    }
 }

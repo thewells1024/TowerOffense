@@ -7,6 +7,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 public class Map {
+   public static final int DEFAULT_HEIGHT = 50;
+   public static final int DEFAULT_WIDTH = 31;
+
    @Getter
    private final int width;
    @Getter
@@ -54,6 +57,14 @@ public class Map {
          this.canHoldTower = from.canHoldTower();
       }
 
+      public boolean placeTower() {
+         if (canHoldTower && !hasTower) {
+            hasTower = true;
+            return true;
+         }
+         return false;
+      }
+
       public boolean hasTower() {
          return hasTower;
       }
@@ -67,7 +78,15 @@ public class Map {
       return new Tile(map.get(xLocation).get(yLocation));
    }
 
+   public Tile getTile(final Location location) {
+      return getTile((int) location.getX(), (int) location.getY());
+   }
+
    public List<Location> getPath() {
       return new ArrayList<>(path);
+   }
+
+   public boolean placeTowerAt(final Location location) {
+      return map.get((int) location.getX()).get((int) location.getY()).placeTower();
    }
 }

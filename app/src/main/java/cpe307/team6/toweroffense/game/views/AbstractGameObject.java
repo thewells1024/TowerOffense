@@ -1,16 +1,34 @@
-package cpe307.team6.toweroffense.game;
+package cpe307.team6.toweroffense.game.views;
 
 import android.graphics.Bitmap;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public abstract class AbstractGameObject {
-   int objectWidth = 0;
-   int objectHeight = 0;
+   enum Movement {
+      ROW_TOP_TO_BOTTOM,
+      ROW_RIGHT_TO_LEFT,
+      ROW_LEFT_TO_RIGHT,
+      ROW_BOTTOM_TO_TOP
+   }
 
-   int x;
-   int y;
+   @Getter
+   private int width = 0;
+   @Getter
+   private int height = 0;
 
-   final int colCount;
-   final int rowCount;
+   @Getter
+   @Setter
+   private int x;
+   @Getter
+   @Setter
+   private int y;
+
+   @Getter
+   private final int colCount;
+   @Getter
+   private final int rowCount;
 
    private Bitmap image;
    private int imageWidth = 0;
@@ -27,8 +45,8 @@ public abstract class AbstractGameObject {
       this.imageWidth = image.getWidth();
       this.imageHeight = image.getHeight();
 
-      this.objectWidth = this.imageWidth / colCount;
-      this.objectHeight = this.imageHeight / rowCount;
+      this.width = this.imageWidth / colCount;
+      this.height = this.imageHeight / rowCount;
 
       this.x = xPos;
       this.y = yPos;
@@ -46,8 +64,8 @@ public abstract class AbstractGameObject {
       this.imageWidth = image.getWidth();
       this.imageHeight = image.getHeight();
 
-      this.objectWidth = this.imageWidth / colCount;
-      this.objectHeight = this.imageHeight / rowCount;
+      this.width = this.imageWidth / colCount;
+      this.height = this.imageHeight / rowCount;
 
       this.x = 0;
       this.y = 0;
@@ -63,24 +81,10 @@ public abstract class AbstractGameObject {
       this.y = 0;
    }
 
+   Bitmap createSubImageAt(final Movement row, final int col) {
+      return Bitmap.createBitmap(image, col * width, row.ordinal() * height, width, height);
+   }
    Bitmap createSubImageAt(final int row, final int col) {
-      // createBitmap(bitmap, x, y, width, height).
-      return Bitmap.createBitmap(image, col * objectWidth, row * objectHeight, objectWidth, objectHeight);
-   }
-
-   public int getX() {
-      return this.x;
-   }
-
-   public int getY() {
-      return this.y;
-   }
-
-   public int getHeight() {
-      return objectHeight;
-   }
-
-   public int getWidth() {
-      return objectWidth;
+      return Bitmap.createBitmap(image, col * width, row * height, width, height);
    }
 }

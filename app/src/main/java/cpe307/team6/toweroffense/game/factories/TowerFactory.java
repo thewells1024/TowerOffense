@@ -9,15 +9,20 @@ import java.util.List;
 import lombok.NonNull;
 
 public class TowerFactory {
-   private TowerFactory() { }
+   static private TowerFactory instance;
+
+   private List<Location> path;
+
+   private TowerFactory(final List<Location> path) {
+      this.path = path;
+   }
 
    public enum TowerType {
       SINGLE_TARGET,
       AREA_OF_EFFECT
    }
 
-   public static Tower createTower(@NonNull final TowerType type, final List<Location> path,
-      final Location atLocation) {
+   public Tower createTower(@NonNull final TowerType type, final Location atLocation) {
       switch (type) {
          case SINGLE_TARGET:
             return new SingleTargetTower(path, atLocation, Tower.Priority.DISTANCE);
@@ -26,5 +31,13 @@ public class TowerFactory {
          default:
             return null;
       }
+   }
+
+   public static synchronized void createFactory(final List<Location> path) {
+      instance = new TowerFactory(path);
+   }
+
+   public static synchronized TowerFactory getInstance() {
+      return instance;
    }
 }

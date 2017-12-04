@@ -2,21 +2,22 @@ package cpe307.team6.toweroffense.game;
 
 import cpe307.team6.toweroffense.game.interfaces.Unit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Data
 @Setter(AccessLevel.NONE)
 public class BasicUnit implements Unit {
    public static final double SPEED = .1;
+   public static final int DEFAULT_HEALTH = 1000;
 
    private static final int ATTACK = 5;
-   private static final double TILE_CHECK = .999;
+   private static final double TILE_CHECK = 1;
+
 
    private final List<Location> path;
 
@@ -24,13 +25,19 @@ public class BasicUnit implements Unit {
    private Location location;
    private int health;
 
+   public BasicUnit(final List<Location> path) {
+      this.path = new ArrayList<>(path);
+      location = this.path.get(0);
+      prevLocation = location;
+      this.health = DEFAULT_HEALTH;
+   }
+
    public Location move() {
       double remainingMovement = SPEED;
 
-      if (Math.abs(prevLocation.getX() - location.getX()) > TILE_CHECK) {
-         prevLocation = location;
-      } else if (Math.abs(prevLocation.getY() - location.getY()) > TILE_CHECK) {
-         prevLocation = location;
+      if (Math.abs(prevLocation.getX() - location.getX()) >= TILE_CHECK ||
+         Math.abs(prevLocation.getY() - location.getY()) >= TILE_CHECK) {
+         prevLocation = location.getPathLocation();
       }
 
       while (remainingMovement > 0) {
