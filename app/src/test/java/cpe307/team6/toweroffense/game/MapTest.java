@@ -41,6 +41,7 @@ public class MapTest {
                 new Location(0,1)));
         assertEquals(createdMap.get(1).get(0).canHoldTower, true);
     }
+
     @Test
     public void testMapCreate_4() {
         List<List<Map.Tile>> createdMap = Map.createMap(5,5,asList(new Location(0,0),
