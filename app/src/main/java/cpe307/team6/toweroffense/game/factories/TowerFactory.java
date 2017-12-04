@@ -13,7 +13,7 @@ public class TowerFactory {
 
    private List<Location> path;
 
-   private TowerFactory(final List<Location> path) {
+   public TowerFactory(final List<Location> path) {
       this.path = path;
    }
 
