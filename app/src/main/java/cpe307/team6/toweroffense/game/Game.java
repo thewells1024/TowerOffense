@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -51,7 +50,6 @@ public class Game {
          new ArrayList<>(), new ArrayList<>(), Result.IN_PROGRESS);
       final List<Location> flippedPath = new ArrayList<>(path);
       Collections.reverse(flippedPath);
-      Log.d(TAG, path + " " + flippedPath);
       playerStatuses[1] = new PlayerStatus(player2, new Base(STARTING_HEALTH, flippedPath.get(0), flippedPath),
          new ArrayList<>(), new ArrayList<>(), Result.IN_PROGRESS);
       logic = new GameLogic(this);

@@ -27,6 +27,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class GameScreen extends AppCompatActivity {
+   private static final String TAG = "GAME_SCREEN";
    private GameSurface surface;
 
    private Game game;
@@ -64,11 +65,12 @@ public class GameScreen extends AppCompatActivity {
          public void handleMessage(final Message inputMessage) {
             switch (inputMessage.what) {
                case 0:
-                  updateUI(surface, surface.getHolder());
+                  Log.d(TAG, "UI Changed");
                   break;
                default:
                   break;
             }
+            updateUI(surface, surface.getHolder());
          }
       };
       this.game = new Game(player1, player2, map, path, handler);

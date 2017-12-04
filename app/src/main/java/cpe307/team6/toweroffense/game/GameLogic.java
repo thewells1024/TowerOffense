@@ -3,6 +3,7 @@ package cpe307.team6.toweroffense.game;
 import static java.lang.Thread.sleep;
 import static java.util.Arrays.stream;
 
+import cpe307.team6.toweroffense.game.factories.TowerFactory;
 import cpe307.team6.toweroffense.game.interfaces.Bot;
 
 import android.util.Log;
@@ -66,9 +67,11 @@ public class GameLogic implements Runnable {
    }
 
    private void attackUnits(final PlayerStatus offense, final PlayerStatus defense) {
+      Log.d(TAG + "-towers", offense.getTowers().toString());
       offense.getTowers().forEach(tower -> {
+         Log.d(TAG, String.format("looking for targets around %s", tower.getLocation()));
          tower.selectTargets(defense.getUnits()).
-            forEach(unit -> unit.takeDamage(tower.getDamage()));
+            forEach(unit -> Log.i(TAG, String.format("dead: %s", unit.takeDamage(tower.getDamage()))));
          defense.removeInvalidUnits();
       });
    }
@@ -80,16 +83,17 @@ public class GameLogic implements Runnable {
             defense.getBase().takeDamage(unit.getAttack());
          }
       });
-//      offense.removeInvalidUnits();
+      offense.removeInvalidUnits();
    }
 
    private void placeTowers(final PlayerStatus[] statuses) {
       for (PlayerStatus status : statuses) {
-         if (status instanceof Bot) {
-            final Bot bot = (Bot) status;
+         if (status.getPlayer() instanceof Bot) {
+            final Bot bot = (Bot) status.getPlayer();
             if (bot.shouldPlaceTower()) {
                final Location towerLocation = bot.getNewTowerLocation(game.getMap());
-               status.addTowers(new SingleTargetTower(game.getMap().getPath(), towerLocation));
+               status.addTowers(TowerFactory.createTower(TowerFactory.TowerType.SINGLE_TARGET,
+                  game.getMap().getPath(), towerLocation));
                game.getMap().placeTowerAt(towerLocation);
             }
          }

@@ -26,7 +26,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
    public void draw(final Canvas canvas) {
       super.draw(canvas);
 
-      Log.d("MAP_VIEW", "Calling Draw");
       this.mapView.draw(canvas);
    }
 

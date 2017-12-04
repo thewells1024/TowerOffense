@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class EasyBot implements Bot, Player {
    public static final String TAG = "EASY_BOT";
-   public static final double CHANCE = .9;
+   public static final double CHANCE = .001;
 
    private Random rng;
 
@@ -32,7 +32,7 @@ public class EasyBot implements Bot, Player {
 
    @Override
    public boolean shouldPlaceTower() {
-      return rng.nextDouble() >= CHANCE;
+      return rng.nextDouble() <= CHANCE;
    }
 
    @Override

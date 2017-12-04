@@ -15,8 +15,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class SingleTargetTower implements Tower {
-   private static final int ATTACK_DISTANCE = 5;
-   private static final int DAMAGE = 50;
+   private static final int ATTACK_DISTANCE = 100;
+   private static final int DAMAGE = 35;
 
    private final List<Location> path;
    @Getter

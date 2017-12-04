@@ -16,7 +16,8 @@ public class BasicUnit implements Unit {
    public static final int DEFAULT_HEALTH = 1000;
 
    private static final int ATTACK = 5;
-   private static final double TILE_CHECK = .999;
+   private static final double TILE_CHECK = 1;
+
 
    private final List<Location> path;
 
@@ -27,16 +28,16 @@ public class BasicUnit implements Unit {
    public BasicUnit(final List<Location> path) {
       this.path = new ArrayList<>(path);
       location = this.path.get(0);
+      prevLocation = location;
       this.health = DEFAULT_HEALTH;
    }
 
    public Location move() {
       double remainingMovement = SPEED;
 
-      if (Math.abs(prevLocation.getX() - location.getX()) > TILE_CHECK) {
-         prevLocation = location;
-      } else if (Math.abs(prevLocation.getY() - location.getY()) > TILE_CHECK) {
-         prevLocation = location;
+      if (Math.abs(prevLocation.getX() - location.getX()) >= TILE_CHECK ||
+         Math.abs(prevLocation.getY() - location.getY()) >= TILE_CHECK) {
+         prevLocation = location.getPathLocation();
       }
 
       while (remainingMovement > 0) {
