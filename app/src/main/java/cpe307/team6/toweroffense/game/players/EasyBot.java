@@ -13,7 +13,9 @@ import android.util.Log;
 public class EasyBot implements Bot, Player {
    public static final String TAG = "EASY_BOT";
    public static final double CHANCE = .001;
+   public static final int MAX_TOWERS = 4;
 
+   private int numTowers = 0;
    private Random rng;
 
    public EasyBot() {
@@ -32,7 +34,7 @@ public class EasyBot implements Bot, Player {
 
    @Override
    public boolean shouldPlaceTower() {
-      return rng.nextDouble() <= CHANCE;
+      return rng.nextDouble() <= CHANCE && numTowers < MAX_TOWERS;
    }
 
    @Override
@@ -41,6 +43,7 @@ public class EasyBot implements Bot, Player {
       do {
          selected = new Location(rng.nextInt(map.getWidth()), rng.nextInt(map.getHeight()));
       } while (!map.getTile(selected).canHoldTower());
+      numTowers++;
       return selected;
    }
 }

@@ -4,6 +4,7 @@ import cpe307.team6.toweroffense.game.Game;
 import cpe307.team6.toweroffense.game.Location;
 import cpe307.team6.toweroffense.game.Map;
 import cpe307.team6.toweroffense.game.PlayerStatus;
+import cpe307.team6.toweroffense.game.factories.TowerFactory;
 import cpe307.team6.toweroffense.game.interfaces.Player;
 import cpe307.team6.toweroffense.game.interfaces.Unit;
 import cpe307.team6.toweroffense.game.players.EasyBot;
@@ -59,6 +60,7 @@ public class GameScreen extends AppCompatActivity {
       }
       surface = new GameSurface(this);
       final List<Location> path = getPath();
+      TowerFactory.createFactory(path);
       map = new Map(Map.DEFAULT_WIDTH, Map.DEFAULT_HEIGHT, path);
       final Handler handler = new Handler(Looper.getMainLooper()) {
          @Override

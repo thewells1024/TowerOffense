@@ -92,8 +92,8 @@ public class GameLogic implements Runnable {
             final Bot bot = (Bot) status.getPlayer();
             if (bot.shouldPlaceTower()) {
                final Location towerLocation = bot.getNewTowerLocation(game.getMap());
-               status.addTowers(TowerFactory.createTower(TowerFactory.TowerType.SINGLE_TARGET,
-                  game.getMap().getPath(), towerLocation));
+               status.addTowers(TowerFactory.getInstance().
+                  createTower(TowerFactory.TowerType.SINGLE_TARGET, towerLocation));
                game.getMap().placeTowerAt(towerLocation);
             }
          }
