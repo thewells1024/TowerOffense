@@ -8,6 +8,7 @@ import java.util.List;
 
 import cpe307.team6.toweroffense.game.interfaces.Tower;
 import cpe307.team6.toweroffense.game.interfaces.Unit;
+import cpe307.team6.toweroffense.game.Location;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
