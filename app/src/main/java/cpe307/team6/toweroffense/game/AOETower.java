@@ -68,6 +68,8 @@ public class AOETower implements Tower {
       return this.priority;
    }
 
+   public int getDamage() { return 1; }
+
    /* Handles Priorities: DISTANCE and HEALTH
    * * DISTANCE:
    *  -> Attacks Unit that is the shortest distance from this tower
