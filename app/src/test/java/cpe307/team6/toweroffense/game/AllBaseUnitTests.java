@@ -7,6 +7,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ BaseTakeDamageTest.class, BaseGetPathTest.class })
 
+/* Caleb Kim */
 public class AllBaseUnitTests {
 
 }
