@@ -31,7 +31,7 @@
         <module name="AvoidStarImport" />
         <module name="CustomImportOrder">
             <property name="customImportOrderRules"
-                value="STATIC###SAME_PACKAGE(4)###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE###SPECIAL_IMPORTS" />
+                value="STATIC###SAME_PACKAGE(3)###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE###SPECIAL_IMPORTS" />
             <property name="specialImportsRegExp" value="^lombok\." />
             <property name="sortImportsInGroupAlphabetically" value="true" />
         </module>

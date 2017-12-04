@@ -1,9 +1,8 @@
 package cpe307.team6.toweroffense.game.interfaces;
 
+import cpe307.team6.toweroffense.game.Result;
+
 public interface Player {
    String getUsername();
-   int getLosses();
-   int getWins();
-   double getWinRatio();
-   void addResult(int gameResult);
+   void addResult(Result gameResult);
 }

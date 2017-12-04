@@ -2,14 +2,15 @@ package cpe307.team6.toweroffense.game;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import cpe307.team6.toweroffense.game.interfaces.Unit;
 import cpe307.team6.toweroffense.game.interfaces.Tower;
+import cpe307.team6.toweroffense.game.interfaces.Unit;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

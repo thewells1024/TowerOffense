@@ -1,20 +1,20 @@
 package cpe307.team6.toweroffense.game;
 
-import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cpe307.team6.toweroffense.game.interfaces.Player;
 import cpe307.team6.toweroffense.game.interfaces.Tower;
 import cpe307.team6.toweroffense.game.interfaces.Unit;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PlayerStatusTest {
    private Player player;

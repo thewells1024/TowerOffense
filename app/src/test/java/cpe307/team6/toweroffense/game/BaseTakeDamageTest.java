@@ -1,10 +1,10 @@
 package cpe307.team6.toweroffense.game;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Collections;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class BaseTakeDamageTest {
    @Test
