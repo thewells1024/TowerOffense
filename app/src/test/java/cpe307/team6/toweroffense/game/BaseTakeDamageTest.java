@@ -6,7 +6,7 @@ import java.util.Collections;
 
 import org.junit.Test;
 
-public class BaseTest {
+public class BaseTakeDamageTest {
    @Test
    public void testTakeDamage() {
       Base base = new Base(300, new Location(0,0), Collections.<Location>emptyList());
