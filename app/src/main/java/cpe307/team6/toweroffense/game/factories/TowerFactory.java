@@ -9,7 +9,7 @@ import java.util.List;
 import lombok.NonNull;
 
 public class TowerFactory {
-   static private TowerFactory instance;
+   private static TowerFactory instance;
 
    private List<Location> path;
 
