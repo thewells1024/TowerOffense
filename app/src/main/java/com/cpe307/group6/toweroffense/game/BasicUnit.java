@@ -53,7 +53,7 @@ public class BasicUnit implements Unit {
          double changeY = nextLocation.getY() - newY;
 
          if (changeX == 0 && changeY == 0) {
-            break;
+            return location;
          }
 
          if (Math.abs(changeX) > remainingMovement) {
