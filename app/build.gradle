@@ -6,7 +6,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
-        applicationId "cpe307.team6.toweroffense"
+        applicationId "com.cpe307.group6.toweroffense"
         minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
